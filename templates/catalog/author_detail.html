@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Author: {{ author.first_name }} {{ author.last_name }}</h1>
+    {% if author.date_of_birth %}
+        <p><strong>Date of birth:</strong> {{ author.date_of_birth }} </p>
+    {% endif %}
+    {% if author.date_of_death %}
+        <p><strong>Date of death: </strong>{{ author.date_of_death }}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <hr>
+    <h3>Action for author</h3>
+    <ul>
+        <li><a href="{% url "author_update" author.id %}">Update author</a></li>
+        <li><a href="{% url "author_delete" author.id %}">Delete author</a></li>
+    </ul>
+    <hr>
+    {% endif %}
+
+    <h3>Books</h3>
+    {% if books %}
+
+        {% for book in books %}
+            <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>Genre:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+            <p><strong>Description:</strong> {{ book.summary }}</p>
+        {% endfor %}
+
+    {% endif %}
+
+
+{% endblock %}
