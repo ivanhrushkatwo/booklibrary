@@ -1,72 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d737956-5778-42ec-92a0-0c8b667ada05" name="Default" comment="V2.0">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/context_processors/__init__.py" />
-    </list>
+    <list default="true" id="8d737956-5778-42ec-92a0-0c8b667ada05" name="Default" comment="V2.0" />
     <list id="2a82ca03-6427-4d3a-8e58-107db8e8cfbf" name="Rejected commit: Default" comment="V2.0">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Bold.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Bold.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Bold.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Light.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Light.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Light.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Light.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Medium.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Medium.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Medium.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Medium.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Thin.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Thin.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Thin.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/fonts/roboto/Roboto-Thin.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/catalog/migrations/0002_auto_20170224_1226.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/catalog/migrations/0003_book_image.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/context_processors/category.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/css/materialize.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/css/materialize.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/js/init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/js/materialize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/materialize/js/materialize.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/catalog/about.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/catalog/pagination.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/registration/registration_form.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/catalog/migrations/0002_auto_20170216_1559.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/catalog/migrations/0003_bookinstance_borrower.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/catalog/book_renew_librarian.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/9f9d4a2a-3f7e-4548-990e-5e977ac34b2c.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/9f9d4a2a-3f7e-4548-990e-5e977ac34b2c.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/admin.py" afterPath="$PROJECT_DIR$/catalog/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/forms.py" afterPath="$PROJECT_DIR$/catalog/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/catalog/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/models.py" afterPath="$PROJECT_DIR$/catalog/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/urls.py" afterPath="$PROJECT_DIR$/catalog/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/views.py" afterPath="$PROJECT_DIR$/catalog/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locallibrary/settings.py" afterPath="$PROJECT_DIR$/locallibrary/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base_generic.html" afterPath="$PROJECT_DIR$/templates/base_generic.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/author_confirm_delete.html" afterPath="$PROJECT_DIR$/templates/catalog/author_confirm_delete.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/author_detail.html" afterPath="$PROJECT_DIR$/templates/catalog/author_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/author_form.html" afterPath="$PROJECT_DIR$/templates/catalog/author_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/author_list.html" afterPath="$PROJECT_DIR$/templates/catalog/author_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/book_detail.html" afterPath="$PROJECT_DIR$/templates/catalog/book_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/book_form.html" afterPath="$PROJECT_DIR$/templates/catalog/book_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/book_list.html" afterPath="$PROJECT_DIR$/templates/catalog/book_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/bookinstance_list_borrowed_user.html" afterPath="$PROJECT_DIR$/templates/catalog/bookinstance_list_borrowed_user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/login.html" afterPath="$PROJECT_DIR$/templates/registration/login.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -859,7 +796,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21504803" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="771" y="59" width="377" height="921" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
