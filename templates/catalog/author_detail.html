@@ -9,6 +9,10 @@
         <p><strong>Date of death: </strong>{{ author.date_of_death }}
     {% endif %}
 
+    {% if author.biography %}
+        <p><strong>Biography: </strong>{{ author.biography }}</p>
+    {% endif %}
+
     {% if user.is_authenticated %}
     <hr>
     <h3>Action for author</h3>

@@ -1,37 +1,66 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Title: {{ book.title }}</h1>
 
-  <p><strong>Author:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
-  <p><strong>Summary:</strong> {{ book.summary }}</p>
-  <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-  <p><strong>Language:</strong> {{ book.language }}</p>
-  <p><strong>Genre:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <h1>{{ book.title }}</h1>
 
-     {% if user.is_authenticated %}
-    <hr>
+    <div class="row">
 
-   <div>
-   <h3>Action for book</h3>
-   <ul>
-        <li><a href="{% url "book_update" book.id %}">Update book</a></li>
-        <li><a href="{% url "book_delete" book.id %}">Delete book</a></li>
-   </ul>
-   </div>
+        <div class="col s8 m4">
+            <!-- Promo Content 1 goes here -->
+            {% if book.image %}
+                <img src="{{ book.image}}" alt="">
+            {% else %}
+                <img src="https://rachelandrew.co.uk/perch/resources/sb3-smashing-book-3-redesign-the-web1.png" alt="">
+            {% endif %}
 
-    <hr>
+        </div>
+
+        <div class="col s8 m8">
+            <!-- Promo Content 2 goes here -->
+            <p><strong>Author:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p>
+            <p><strong>Category:</strong> {{ book.category }}</p>
+            <p><strong>Summary:</strong> {{ book.summary }}</p>
+            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+            <p><strong>Language:</strong> {{ book.language }}</p>
+            <br>
+            <a>Price: {{ book.price }} $ | Rating: {{ book.rating }}</a>
+            <br>
+            <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">shopping_cart</i>Buy</a>
+            <br>
+            <br>
+
+
+            <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">thumb_up</i>Like</a>
+            <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">thumb_down</i>Unlike</a>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col s8 m12">
+        {% for i in book.genre.all %}
+
+            <div class="chip">#{{ i }}</div>
+
+        {% endfor %}
+        </div>
+    </div>
+
+
+    {% if user.is_authenticated %}
+
+
+    <div>
+        <h3>Action for book</h3>
+        <ul>
+            <li><a href="{% url "book_update" book.id %}">Update book</a></li>
+            <li><a href="{% url "book_delete" book.id %}">Delete book</a></li>
+        </ul>
+    </div>
+
     {% endif %}
 
-  <div style="margin-left:20px;margin-top:20px">
-    <h4>Copies</h4>
-
-    {% for copy in book.bookinstance_set.all %}
-    <hr>
-    <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'd' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
-    {% if copy.status != 'a' %}<p><strong>Due to be returned:</strong> {{copy.due_back}}</p>{% endif %}
-    <p><strong>Imprint:</strong> {{copy.imprint}}</p>
-    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
-    {% endfor %}
-  </div>
 {% endblock %}

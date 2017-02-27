@@ -1,66 +1,183 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Starter Template - Materialize</title>
 
-  {% block title %}<title>Local Library</title>{% endblock %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet"  href="{% static "materialize/css/materialize.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "materialize/css/style.css" %}">
 
-  <!-- Add additional CSS in static file -->
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
 
-  <div class="container-fluid">
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">#BookMarket</a>
 
-    <div class="row">
-      <div class="col-sm-2">
-      {% block sidebar %}
-      <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'books' %}">All books</a></li>
-          <li><a href="{% url 'authors' %}">All authors</a></li>
-          <br>
-          {% if user.is_authenticated %}
-            <li>User: {{ user.get_username }}</li>
-          <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
-            <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-          {% else %}
-            <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
-          {% endif %}
-      </ul>
-     {% endblock %}
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="material-icons left">shopping_cart</i>Basket</a></li>
 
-      </div>
-      <div class="col-sm-10 ">
-      {% block content %}{% endblock %}
+        {% if user.is_authenticated %}
 
-      {% block pagination %}
-          {% if is_paginated %}
-              <div class="pagination">
-                  <span class="page-links">
-                      {% if page_obj.has_previous %}
-                          <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
-                      {% endif %}
-                      <span class="page-current">
-                          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                      </span>
-                      {% if page_obj.has_next %}
-                          <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
-                      {% endif %}
-                  </span>
-              </div>
-          {% endif %}
-      {% endblock %}
+            <li><i class="material-icons left">perm_identity</i>{{ user.get_username }}</li>
+            <li><a href="{% url 'logout' %}?next={{request.path}}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
 
-      </div>
+        {% else %}
+
+            <li><a href="{% url 'login' %}?next={{request.path}}"><i class="material-icons right">input</i>Login</a></li>
+            <li><a href="{% url 'registration' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
+
+        {% endif %}
+
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}?next={{request.path}}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}?next={{request.path}}"><i class="material-icons right">input</i>Login</a></li>
+            <li><a href="{% url 'registration' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
+        {% endif %}
+            <li><a href="{% url 'books' %}"><i class="material-icons right">class</i>Books</a></li>
+            <li><a href="{% url 'authors' %}"><i class="material-icons right">recent_actors</i>Authors</a></li>
+            <li><a class="dropdown-button" href="#" data-activates="dropdown-mobile"><i class="material-icons right">clear_all</i>Category<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="{% url "about" %}"><i class="material-icons right">assignment_ind</i>About us</a></li>
+            <br>
+            <li><a href="#"><i class="material-icons right">shopping_cart</i>Basket</a></li>
+        </ul>
+
+        <ul id="dropdown-mobile" class="dropdown-content">
+        {% for category in category_list %}
+            <li><a href="{% url "search_category" category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
     </div>
 
-  </div>
-</body>
+</nav>
+
+<div>
+    <nav class="light-green lighten-1">
+        <div class="nav-wrapper container">
+
+
+
+            <ul id="dropdown1" class="dropdown-content">
+            {% for category in category_list %}
+                <li><a href="{% url "search_category" category.id %}">{{ category.name }}</a></li>
+            {% endfor %}
+            </ul>
+
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a href="#">TEST</a></li>
+                <li><a href="#">TEST</a></li>
+                <li><a href="#">TEST</a></li>
+                <li><a href="#">TEST</a></li>
+                <li><a href="#">TEST</a></li>
+            </ul>
+
+            <ul class="left hide-on-med-and-down">
+                <li><a href="{% url 'books' %}"><i class="material-icons right">class</i>Books</a></li>
+                <li><a href="{% url 'authors' %}"><i class="material-icons right">recent_actors</i>Authors</a></li>
+
+                <li>
+                    <a class="dropdown-button" href="#" data-activates="dropdown1">
+                        <i class="material-icons left">clear_all</i>Shop by category<i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" href="#" data-activates="dropdown2">
+                        <i class="material-icons left">search</i>Search<i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+            </ul>
+
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url "about" %}"><i class="material-icons right">assignment_ind</i>About us</a></li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+
+
+<div class="container" style="min-height: 500px">
+    <div class="col-sm-10">
+
+        <!-- MAIN CONTENT -->
+
+        {% block content %}{% endblock %}
+
+        <!-- END MAIN CONTENT -->
+
+        {% block pagination %}
+            {% include "catalog/pagination.html" %}
+        {% endblock %}
+
+    </div>
+</div>
+
+<footer class="page-footer orange">
+    <div class="container">
+        <div class="row">
+
+            <div class="col l2 s12">
+                <h5 class="white-text">Navigation</h5>
+                <ul>
+                    <li><p><a class="white-text" href="{% url 'index' %}">Home</a></p></li>
+                    <li><p><a class="white-text" href="{% url 'books' %}">Books</a></p></li>
+                    <li><p><a class="white-text" href="{% url 'authors' %}">Authors</a></p></li>
+                </ul>
+            </div>
+
+            <div class="col l3 s12">
+                <h5 class="white-text">Contacts</h5>
+                <ul>
+                    <li class="white-text"><p>+38 (099) 562-25-63</p></li>
+                    <li class="white-text"><p>+38 (067) 562-25-63</p></li>
+                    <li class="white-text"><p>shop@bookmarket.com.rt</p></li>
+                    <li class="white-text"><p>New-York</p></li>
+                </ul>
+            </div>
+
+            <div class="col l3 s12">
+                <h5 class="white-text">BookMarket.com.rt</h5>
+                <ul>
+                    <li class="white-text"><p>Наша команда длительное время занималась книготорговой деятельностью.
+                    Стремление к самообразованию побудило нас к созданию библиотеки ...
+                    <a href="{% url "about" %}">read more</a></p>
+                    </li>
+                </ul>
+            </div>
+        <div class="col l3 s12">
+            <img src="http://bizlit.com.ua/image/data/need/buy_footer.png" alt="">
+        </div>
+
+        </div>
+    </div>
+
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        </div>
+    </div>
+</footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <script src="{% static "materialize/js/materialize.js" %}"></script>
+    <script src="{% static "materialize/js/init.js" %}"></script>
+    <!-- END Scripts -->
+
+  </body>
 </html>

@@ -8,7 +8,10 @@
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" action="" value="Yes, delete." />
+    <button class="btn waves-effect waves-light" type="submit" name="action">Yes, delete.
+    <i class="material-icons right">send</i>
+  </button>
+
 </form>
 
 {% endblock %}

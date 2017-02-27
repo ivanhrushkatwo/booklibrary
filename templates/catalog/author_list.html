@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Author List</h1>
+
 
 
      {% if user.is_authenticated %}
@@ -14,15 +14,42 @@
     <ul>
 
       {% for author in author_list %}
-      <li>
-        <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a>
-          {% if author.date_of_birth %}
-              {{ author.date_of_birth }} -
-          {% endif %}
-          {% if author.date_of_death %}
-              {{ author.date_of_death }}
-          {% endif %}
-      </li>
+
+
+          <div class="card horizontal small">
+            <div class="card-image">
+                <img src="https://media1.britannica.com/eb-media/58/95758-004-BD98B43B.jpg">
+            </div>
+
+            <div class="card-stacked">
+
+                <div class="card-content">
+                    <p>Title: <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a></p>
+                    <br>
+                    {% if author.date_of_birth %}
+                        <p>{{ author.date_of_birth }}</p>
+                    {% endif %}
+
+                    {% if author.date_of_death %}
+                    <p>{{ author.date_of_death }}</p>
+                    {% endif %}
+                {% if author.biography %}
+                    <p>{{ author.biography|slice:":48" }}...<a href="{{ author.get_absolute_url }}">read more</a></p>
+                {% else %}
+                <p>...</p>
+            {% endif %}
+
+                </div>
+
+                <div class="card-action">
+                    <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a>
+                </div>
+
+            </div>
+        </div>
+
+
+
       {% endfor %}
 
     </ul>

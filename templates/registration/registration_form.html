@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="col s12 m6 ">
+    <div class="icon-block ">
+
+        <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+
+        <h4 class="center">Registration</h4>
+
+        <form  class="" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input  class="btn waves-effect waves-light" type="submit" value="Register">
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
