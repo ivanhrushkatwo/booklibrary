@@ -2,17 +2,12 @@ import datetime
 
 from django.views import generic
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import permission_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 
-from .models import Book, Author, GenreBook, CustomUser
+from .models import Book, Author
 from .forms import UserCustomForm
 
 
@@ -68,7 +63,7 @@ class RegistrationView(FormView):
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 3
+    paginate_by = 5
 
 
 class BookDetailView(generic.DetailView):
@@ -78,7 +73,7 @@ class BookDetailView(generic.DetailView):
 
 class AuthorListView(generic.ListView):
     model = Author
-    paginate_by = 3
+    paginate_by = 5
 
 
 class AuthorDetailView(generic.DetailView):

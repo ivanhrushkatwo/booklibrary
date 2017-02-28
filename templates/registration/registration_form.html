@@ -2,23 +2,96 @@
 
 {% block content %}
 
-<div class="col s12 m6 ">
+    {% if form.errors %}
+
+        <p class="truncate center-align z-depth-1">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+
+        {% if user.is_authenticated %}
+            <p class="truncate center-align z-depth-1">Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.
+            </p>
+        {% endif %}
+
+    {% endif %}
+
     <div class="icon-block ">
 
         <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
 
         <h4 class="center">Registration</h4>
+    </div>
 
-        <form  class="" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
-        {% csrf_token %}
+    <div class="row">
 
-        {{ form.as_p }}
+        <div class="col s3">
+            <!-- Promo Content 1 goes here -->
+        </div>
 
-        <input  class="btn waves-effect waves-light" type="submit" value="Register">
+    <div class="col s6">
+       <form  class="" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+           {% csrf_token %}
+           <div class="row">
+            <div class="input-field col s12">
+                <input id="username" name="username" type="text" class="validate">
+                <label for="username">Username</label>
+            </div>
+           </div>
+
+           <div class="row">
+            <div class="input-field col s12">
+                <input id="username" name="password" type="password" class="validate">
+                <label for="username">Password</label>
+            </div>
+           </div>
+
+           <div class="row">
+            <div class="input-field col s12">
+                <input id="username" name="email" type="email" class="validate">
+                <label for="username">E-mail</label>
+            </div>
+           </div>
+
+           <div class="row">
+            <div class="input-field col s12">
+                <input id="username" name="first_name" type="text" class="validate">
+                <label for="username">First name</label>
+            </div>
+           </div>
+
+           <div class="row">
+            <div class="input-field col s12">
+                <input id="username" name="last_name" type="text" class="validate">
+                <label for="username">Last name</label>
+            </div>
+           </div>
+
+
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input name="image" type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+
+{#        {{ form.as_p }}#}
+
+           <div>
+
+                <button class="btn waves-effect waves-light" type="submit" name="action">Register
+                    <i class="material-icons right">send</i>
+                </button>
+
+            </div>
 
         </form>
+    </div>
 
     </div>
-</div>
 
 {% endblock %}

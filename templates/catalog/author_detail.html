@@ -1,8 +1,26 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Author: {{ author.first_name }} {{ author.last_name }}</h1>
-    {% if author.date_of_birth %}
+
+    <h1>{{ author.first_name }} {{ author.last_name }}</h1>
+
+    <div class="row">
+
+        <div class="col s8 m4">
+            <!-- Promo Content 1 goes here -->
+            {% if author.image %}
+                <img src="{{ author.image.url }}" alt="">
+            {% else %}
+                <img src="https://www.biography.com/.image/c_fit,cs_srgb,dpr_1.0,q_80,w_620/MTE5NDg0MDU0OTQ0OTc0MzUx/charles-dickens-9274087-2-raw.jpg" alt="">
+            {% endif %}
+
+        </div>
+
+        <div class="col s8 m8">
+            <!-- Promo Content 2 goes here -->
+
+
+            {% if author.date_of_birth %}
         <p><strong>Date of birth:</strong> {{ author.date_of_birth }} </p>
     {% endif %}
     {% if author.date_of_death %}
@@ -22,6 +40,16 @@
     </ul>
     <hr>
     {% endif %}
+
+            <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">thumb_up</i>Like</a>
+            <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">thumb_down</i>Unlike</a>
+
+        </div>
+
+
+    </div>
+
+
 
     <h3>Books</h3>
     {% if books %}

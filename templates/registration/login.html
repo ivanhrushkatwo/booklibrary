@@ -2,41 +2,64 @@
 
 {% block content %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+<div class="row">
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
+    <div class="col s3">
+        <!-- Promo Content 1 goes here -->
+    </div>
+
+    <div class="col s6">
+
+    {% if form.errors %}
+
+        <p class="truncate center-align z-depth-1">Your username and password didn't match. Please try again.</p>
     {% endif %}
-{% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
+    {% if next %}
 
-<div>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
+        {% if user.is_authenticated %}
+            <p class="truncate center-align z-depth-1">Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.
+            </p>
+        {% endif %}
+
+    {% endif %}
+
+    <div class="icon-block">
+        <h2 class="center light-blue-text"><i class="material-icons">input</i></h2>
+        <h4 class="center">Login</h4>
+    </div>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" name="username" type="text" class="validate">
+                <label for="username">Username</label>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" name="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                <i class="material-icons right">send</i>
+            </button>
+
+            <input type="hidden" name="next" value="" />
+        </div>
+    </form>
+
+    </div>
 </div>
-<div>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</div>
 
-<div>
-  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
-
-  <input type="hidden" name="next" value="" />
-</div>
-</form>
-
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
 {% endblock %}

@@ -18,7 +18,11 @@
 
           <div class="card horizontal small">
             <div class="card-image">
-                <img src="https://media1.britannica.com/eb-media/58/95758-004-BD98B43B.jpg">
+                {% if author.image %}
+                    <img src="{{ author.image.url }}" alt="">
+                {% else %}
+                    <img src="https://www.biography.com/.image/c_fit,cs_srgb,dpr_1.0,q_80,w_620/MTE5NDg0MDU0OTQ0OTc0MzUx/charles-dickens-9274087-2-raw.jpg">
+                {% endif %}
             </div>
 
             <div class="card-stacked">

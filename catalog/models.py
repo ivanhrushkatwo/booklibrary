@@ -121,6 +121,7 @@ class Book(models.Model):
     )
 
     image = models.ImageField(
+        upload_to="img_book",
         verbose_name="Image",
         null=True,
         blank=True,
@@ -165,6 +166,8 @@ class Author(models.Model):
     )
 
     image = models.ImageField(
+        upload_to="img_author",
+        verbose_name="Author image",
         null=True,
         blank=True
     )

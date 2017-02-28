@@ -13,7 +13,7 @@ class BookModelForm(ModelForm):
 
     class Meta:
         model = Book
-        fields = ["title", "author", "summary", "isbn", "genre", "language"]
+        fields = ("title", "author", "summary", "isbn", "genre", "language", "image")
 
 
 class UserCustomForm(forms.ModelForm):

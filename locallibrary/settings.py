@@ -25,6 +25,7 @@ SECRET_KEY = '4psf+*j*%ayk=#b2^6)&bjn&=e91+4=c7_k*q7^#o6u)kt=vyu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = '/'
@@ -34,13 +35,16 @@ AUTH_USER_MODEL = "catalog.CustomUser"
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',         # Warning ‘suit’ must be added before ‘django.contrib.admin’
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'catalog',    # 'catalog.apps.AppConfig'
+    'catalog',          # 'catalog.apps.AppConfig'
+
+    'easy_thumbnails',  # lib for image
 ]
 
 MIDDLEWARE = [
@@ -130,3 +134,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "files/media")
+MEDIA_URL = "/media/"
+
+THUMBNAIL_BASEDIR = os.path.join(BASE_DIR, "files/media/thumbnails_img")
+
+THUMBNAIL_ALIASES = {
+    "": {
+        "sml": {"size": (300, 0)}
+    }
+}

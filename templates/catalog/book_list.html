@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+{% load thumbnail %}
 
     {% if book_list %}
 
@@ -10,18 +11,20 @@
     <div class="col s6 m12">
         <div class="card horizontal small">
             <div class="card-image">
-                <img src="https://rachelandrew.co.uk/perch/resources/sb3-smashing-book-3-redesign-the-web1.png">
+                {% if book.image %}
+                    <img src="{{ book.image.url }}" alt="">
+                {% else %}
+                    <img src="https://rachelandrew.co.uk/perch/resources/sb3-smashing-book-3-redesign-the-web1.png">
+                {% endif %}
             </div>
 
             <div class="card-stacked">
 
                 <div class="card-content">
                     <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>
-
                     <p><strong>Author:</strong> {{book.author}}</p>
                     <p><strong>Category:</strong> {{book.category }}</p>
                     <p>{{ book.summary|slice:":64" }}... <a href="{{ book.get_absolute_url }}">read more</a></p>
-
                 </div>
 
                 <div class="card-action">
