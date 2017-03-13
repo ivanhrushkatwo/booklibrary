@@ -1,47 +1,31 @@
 {% extends "base_generic.html" %}
 
+{% load imagefit %}
+
+
 {% block content %}
 
-
-
-     {% if user.is_authenticated %}
-    <ul>
-        <li><a href="{% url "author_create" %}">Create new author</a></li>
-    </ul>
-    {% endif %}
-
     {% if author_list %}
-    <ul>
 
       {% for author in author_list %}
-
 
           <div class="card horizontal small">
             <div class="card-image">
                 {% if author.image %}
-                    <img src="{{ author.image.url }}" alt="">
+                    <img class="responsive-img" src="{{ author.image.url|resize:"128x180" }}" alt="">
                 {% else %}
-                    <img src="https://www.biography.com/.image/c_fit,cs_srgb,dpr_1.0,q_80,w_620/MTE5NDg0MDU0OTQ0OTc0MzUx/charles-dickens-9274087-2-raw.jpg">
+                    <img class="responsive-img" src="{{ "/media/std_image/authorexample.jpg"|resize:"180x180" }}" alt="">
                 {% endif %}
             </div>
 
             <div class="card-stacked">
 
                 <div class="card-content">
-                    <p>Title: <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a></p>
-                    <br>
-                    {% if author.date_of_birth %}
-                        <p>{{ author.date_of_birth }}</p>
-                    {% endif %}
+                    <h4><a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a></h4>
 
-                    {% if author.date_of_death %}
-                    <p>{{ author.date_of_death }}</p>
+                    {% if author.biography %}
+                        <p>{{ author.biography|slice:":48" }}...<a href="{{ author.get_absolute_url }}">read more...</a></p>
                     {% endif %}
-                {% if author.biography %}
-                    <p>{{ author.biography|slice:":48" }}...<a href="{{ author.get_absolute_url }}">read more</a></p>
-                {% else %}
-                <p>...</p>
-            {% endif %}
 
                 </div>
 
@@ -52,14 +36,10 @@
             </div>
         </div>
 
-
-
       {% endfor %}
 
-    </ul>
     {% else %}
       <p>There are no author in the library.</p>
     {% endif %}
-
 
 {% endblock %}

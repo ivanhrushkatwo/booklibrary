@@ -1,5 +1,8 @@
-django==1.10.5
+django==1.10.6
+django-registration-redux==1.4
 Pillow
 easy_thumbnails
 django-suit
+django-imagefit
+djangoajax
 

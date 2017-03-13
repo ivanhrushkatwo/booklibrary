@@ -4,7 +4,7 @@
 
     {% if form.errors %}
 
-        <p class="truncate center-align z-depth-1">Your username and password didn't match. Please try again.</p>
+        <p class="truncate center-align z-depth-1 red">Something error</p>
     {% endif %}
 
     {% if next %}
@@ -31,7 +31,7 @@
         </div>
 
     <div class="col s6">
-       <form  class="" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+       <form  class="" method="post" action="{% url "users:registration_register" %}" enctype="multipart/form-data">
            {% csrf_token %}
            <div class="row">
             <div class="input-field col s12">

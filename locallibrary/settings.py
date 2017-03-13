@@ -24,28 +24,41 @@ SECRET_KEY = '4psf+*j*%ayk=#b2^6)&bjn&=e91+4=c7_k*q7^#o6u)kt=vyu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+#TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 AUTH_USER_MODEL = "catalog.CustomUser"
 
+LOGIN_URL = "users:auth_login"
+LOGOUT_URL = "users:auth_logout"
+REGISTRATION_OPEN = True
 # Application definition
 
 INSTALLED_APPS = [
     'suit',         # Warning ‘suit’ must be added before ‘django.contrib.admin’
+
     'django.contrib.admin',
+
+    'django.contrib.sites',
+    'registration',     # Before 'django.contrib.auth',
     'django.contrib.auth',
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'catalog',          # 'catalog.apps.AppConfig'
 
-    'easy_thumbnails',  # lib for image
+    'catalog',          # 'catalog.apps.AppConfig'
+    'django_ajax',
+    'imagefit',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,8 +85,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                # my owd context processor
-                'context_processors.category.category',
+                # my owd context processor - list with category
+                'context_processors.custom_context_processor.category',
+
+                # basket list
+                'context_processors.custom_context_processor.basket_with_goods',
             ],
         },
     },
@@ -138,10 +154,10 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, "files/media")
 MEDIA_URL = "/media/"
 
-THUMBNAIL_BASEDIR = os.path.join(BASE_DIR, "files/media/thumbnails_img")
-
-THUMBNAIL_ALIASES = {
-    "": {
-        "sml": {"size": (300, 0)}
-    }
+IMAGEFIT_ROOT = os.path.join(BASE_DIR, "files")
+IMAGEFIT_EXT_TO_FORMAT = {'.jpg': 'jpeg', '.bmp': 'png'}
+IMAGEFIT_PRESETS = {
+    'thumbnail': {'width': 64, 'height': 64, 'crop': True},
+    'my_preset1': {'width': 300, 'height': 220},
+    'my_preset2': {'width': 100},
 }

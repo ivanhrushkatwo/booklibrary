@@ -2,28 +2,33 @@
 
 {% block content %}
 
-<div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="http://prmceam.ac.in/wp-content/uploads/2015/09/library.jpg">
+
+<div class="carousel carousel-slider center" data-indicators="true">
+
+    <div class="carousel-fixed-item center">
+        <a class="btn waves-effect white grey-text darken-text-2">button</a>
     </div>
-    <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Welcome to LocalLibrary<i class="material-icons right">more_vert</i></span>
-        <p>Welcome to <em>LocalLibrary</em>
-        , a very basic Django website developed as a tutorial example on the Mozilla Developer Network.
-        </p>
-        <p><a href="{% url 'books' %}">Books</a></p>
+
+    <div class="carousel-item red white-text" href="#one!">
+        <h2>First Panel</h2>
+        <p class="white-text">This is your first panel</p>
     </div>
-    <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">About market book<i class="material-icons right">close</i></span>
-        <p>Welcome to <em>LocalLibrary</em>
-        a very basic Django website developed as a tutorial example on the Mozilla Developer Network.
-        </p>
-    <p>Наша команда длительное время занималась книготорговой деятельностью. Стремление к самообразованию побудило нас к созданию корпоративной библиотеки бизнес-литературы. Основные принципы мышления успешных людей, биографии известных предпринимателей, интересные идеи и неожиданные решения — деловая литература затягивала все больше. Мы готовы были платить немалые деньги за эти книги, ведь с их помощью могли зарабатывать гораздо больше.
-Идея для новой деятельности пришла сама собой. Во время поездки в Москву. На книжном рынке увидели книгу Айн Рэнд «Атлант расправил плечи» и были крайне удивлены — в пересчете на украинские деньги она стоила примерно на сто гривен дешевле. Проверили цены на другие подобные издания — так и есть: на Украине переплатили солидную сумму денег за бизнес-литературу.
-С этого началась разработка бизнес-плана магазина литературы для людей с активной жизненной позицией, в котором цены вполне оправданны, а не безосновательно завышены. Так был создан Bizlit.com.ua
-Сейчас мы - молодой активно развивающийся магазин. За время существования мы преодолели много барьеров, много раз оступились, но несмотря на это продолжаем свой путь согласно намеченному плану и ни на секунду не отходим от своих убеждений, что бизнес-литература на Украине должна продаваться по адекватной цене. Очень трудно изменить текущий ход событий на Украине, потому что все основные игроки привыкли много зарабатывать на вас. Но начало положено, и мы вас уверяем - нам под силу изменить данную ситуацию. И уже сегодня в нашем магазине можно купить книги по бизнесу по справедливым ценам.
-Также на этой странице хотелось бы поделиться приятными моментами из биографии нашего магазина. </p>
+
+    <div class="carousel-item amber white-text" href="#two!">
+        <h2>Second Panel</h2>
+        <p class="white-text">This is your second panel</p>
     </div>
+
+    <div class="carousel-item green white-text" href="#three!">
+        <h2>Third Panel</h2>
+        <p class="white-text">This is your third panel</p>
+    </div>
+
+    <div class="carousel-item blue white-text" href="#four!">
+        <h2>Fourth Panel</h2>
+        <p class="white-text">This is your fourth panel</p>
+    </div>
+
 </div>
 
 <div>
@@ -44,6 +49,7 @@
         <li>soc auth</li>
         <li>post auth</li>
         <li>contact form</li>
+        <li>add i18 </li>
     </ol>
 </div>
 
@@ -57,5 +63,6 @@
 <div>
    <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 </div>
+
 
 {% endblock %}

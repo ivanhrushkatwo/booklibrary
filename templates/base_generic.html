@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 {% load static %}
-{% load thumbnail %}
+{% load imagefit %}
 
 
 <html lang="en">
@@ -22,22 +22,17 @@
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">#BookMarket</a>
 
         <ul class="right hide-on-med-and-down">
-            <li><a href="#"><i class="material-icons left">shopping_cart</i>Basket</a></li>
-
-{#            {% thumbnail book.image "200x200" as im %}#}
-{#                    <img src="{{ im.url }}" alt="">#}
-{#            {% endthumbnail %}#}
-
+            <li id="basket"><a href="{% url "basket" %}"><i class="material-icons left">shopping_cart</i>Basket {{ goods|length }}</a></li>
 
         {% if user.is_authenticated %}
 
             <li><i class="material-icons left">perm_identity</i>{{ user.get_username }}</li>
-            <li><a href="{% url 'logout' %}?next={{request.path}}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
+            <li><a href="{% url 'users:auth_logout' %}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
 
         {% else %}
 
-            <li><a href="{% url 'login' %}?next={{request.path}}"><i class="material-icons right">input</i>Login</a></li>
-            <li><a href="{% url 'registration' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
+            <li><a href="{% url 'users:auth_login' %}"><i class="material-icons right">input</i>Login</a></li>
+            <li><a href="{% url 'users:registration_register' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
 
         {% endif %}
 
@@ -46,17 +41,17 @@
         <ul id="nav-mobile" class="side-nav">
 
         {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}?next={{request.path}}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
+            <li><a href="{% url 'users:auth_logout' %}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
         {% else %}
-            <li><a href="{% url 'login' %}?next={{request.path}}"><i class="material-icons right">input</i>Login</a></li>
-            <li><a href="{% url 'registration' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
+            <li><a href="{% url 'users:auth_login' %}"><i class="material-icons right">input</i>Login</a></li>
+            <li><a href="{% url 'users:registration_register' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
         {% endif %}
             <li><a href="{% url 'books' %}"><i class="material-icons right">class</i>Books</a></li>
             <li><a href="{% url 'authors' %}"><i class="material-icons right">recent_actors</i>Authors</a></li>
             <li><a class="dropdown-button" href="#" data-activates="dropdown-mobile"><i class="material-icons right">clear_all</i>Category<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="{% url "about" %}"><i class="material-icons right">assignment_ind</i>About us</a></li>
             <br>
-            <li><a href="#"><i class="material-icons right">shopping_cart</i>Basket</a></li>
+            <li><a href="{% url "basket" %}"><i class="material-icons right">shopping_cart</i>Basket {{ goods|length }}</a></li>
         </ul>
 
         <ul id="dropdown-mobile" class="dropdown-content">
@@ -74,8 +69,6 @@
     <nav class="light-green lighten-1">
         <div class="nav-wrapper container">
 
-
-
             <ul id="dropdown1" class="dropdown-content">
             {% for category in category_list %}
                 <li><a href="{% url "search_category" category.id %}">{{ category.name }}</a></li>
@@ -83,8 +76,6 @@
             </ul>
 
             <ul id="dropdown2" class="dropdown-content">
-                <li><a href="#">TEST</a></li>
-                <li><a href="#">TEST</a></li>
                 <li><a href="#">TEST</a></li>
                 <li><a href="#">TEST</a></li>
                 <li><a href="#">TEST</a></li>
@@ -132,6 +123,10 @@
     </div>
 </div>
 
+
+ <!-- Modal Structure -->
+
+
 <footer class="page-footer orange">
     <div class="container">
         <div class="row">
@@ -142,6 +137,8 @@
                     <li><p><a class="white-text" href="{% url 'index' %}">Home</a></p></li>
                     <li><p><a class="white-text" href="{% url 'books' %}">Books</a></p></li>
                     <li><p><a class="white-text" href="{% url 'authors' %}">Authors</a></p></li>
+
+                    <li><p><a class="white-text" href="{% url "about" %}">About us</a></p></li>
                 </ul>
             </div>
 
@@ -164,8 +161,9 @@
                     </li>
                 </ul>
             </div>
+
         <div class="col l3 s12">
-            <img src="http://bizlit.com.ua/image/data/need/buy_footer.png" alt="">
+            <img src="{{ "/media/std_image/liqpay.png" }}" alt="">
         </div>
 
         </div>
@@ -180,10 +178,15 @@
 
 
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
+    <script src="{% static "js/app.js" %}"></script>
 
     <script src="{% static "materialize/js/materialize.js" %}"></script>
     <script src="{% static "materialize/js/init.js" %}"></script>
+
+    <script>
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
+    </script>
     <!-- END Scripts -->
 
   </body>

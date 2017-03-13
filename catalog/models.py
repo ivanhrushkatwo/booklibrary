@@ -101,6 +101,12 @@ class Book(models.Model):
         verbose_name="Rating"
     )
 
+    dislike = models.IntegerField(
+        default=0,
+        verbose_name="Dislike",
+
+    )
+
     isbn = models.CharField(
         'ISBN',
         max_length=13,
@@ -170,6 +176,11 @@ class Author(models.Model):
         verbose_name="Author image",
         null=True,
         blank=True
+    )
+
+    rating = models.IntegerField(
+        default=0,
+        verbose_name="Rating"
     )
 
     def get_absolute_url(self):
