@@ -95,8 +95,15 @@ def clear_basket(request):
 
 
 def basket(request):
-    books = Book.objects.filter(id__in=request.session["goods"])
-    price = sum(book.price for book in books)
+    if request.session.get("goods", False):
+        # books = Book.objects.filter(id__in=request.session["goods"])
+        books = []
+        for book_id in request.session["goods"]:
+            books.append(Book.objects.get(id=book_id))
+        price = sum(book.price for book in books)
+    else:
+        books = []
+        price = 0
     return render(request, "catalog/basket.html", {"books": books, "price": price})
 
 
@@ -116,7 +123,7 @@ class About(TemplateView):
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 8
+    paginate_by = 9
 
 
 class BookDetailView(generic.DetailView):
