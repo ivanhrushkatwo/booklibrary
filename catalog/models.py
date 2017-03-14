@@ -76,9 +76,7 @@ class Book(models.Model):
 
     category = models.ForeignKey(
         CategoryBook,
-        models.SET_NULL,
-        blank=True,
-        null=True,
+        models.PROTECT,
     )
 
     summary = models.TextField(

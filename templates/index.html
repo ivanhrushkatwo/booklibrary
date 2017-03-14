@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+{% load imagefit %}
 
 <div class="carousel carousel-slider center" data-indicators="true">
 
@@ -32,10 +32,52 @@
 </div>
 
 <div>
-    <p>The library has the following record counts:</p>
+
     <h4>
-        Here will be five most popular book
+        Six most popular book
     </h4>
+    <div class="row">
+        {% for book in books %}
+
+        <div class="col s12 m4">
+            <div class="card horizontal">
+                <div class="card-image">
+                    {% if book.image %}
+                        <img class="responsive-img" src="{{ book.image.url|resize:"128x128" }}" alt="">
+                    {% else %}
+                        <img class="responsive-img" src="{{ "/media/std_image/book-bow.png"|resize:"128x128" }}">
+                    {% endif %}
+                </div>
+
+                <div class="card-stacked">
+
+                    <div class="card-content">
+                        <h4><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h4>
+                        <p><strong>Author:</strong> {{book.author}}</p>
+                        <p><strong>Category:</strong> {{book.category }}</p>
+                        <p><strong>Rating:</strong> {{ book.rating }}</p>
+                        <p><strong>Price: {{ book.price }} $</strong></p>
+                    </div>
+
+                    <div class="card-action">
+{#                        <a class="waves-effect waves-light btn" href="{% url "add_to_basket" book.id %}">#}
+{#                            <i class="material-icons left">shopping_cart</i>Buy#}
+{#                        </a>#}
+
+{#                        <a href="#"><input id="{{ book.id }}" type="submit" class="btn" value="Buy"/></a>#}
+
+                        <form id="add_to_basket" action="{% url "add_to_basket" book.id %}">
+                            <input id="book_id" type="submit" class="btn" value="Add to basket"/>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
     <h4>
         features to the project
     </h4>
@@ -52,17 +94,5 @@
         <li>add i18 </li>
     </ol>
 </div>
-
-<div>
-    <ul>
-        <li><strong>Books:</strong> {{ num_books }}</li>
-        <li><strong>Authors:</strong> {{ num_authors }}</li>
-    </ul>
-</div>
-
-<div>
-   <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
-</div>
-
 
 {% endblock %}

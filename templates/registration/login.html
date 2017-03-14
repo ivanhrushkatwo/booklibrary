@@ -32,7 +32,7 @@
         <h4 class="center">Login</h4>
     </div>
 
-    <form method="post" action="{% url "users:auth_login" %}">
+    <form method="post" action="{% url "auth_login" %}">
         {% csrf_token %}
 
         <div class="row">
@@ -56,9 +56,14 @@
                 <i class="material-icons right">send</i>
             </button>
 
-            <input type="hidden" name="next" value="" />
+{#            <input type="hidden" name="next" value="" />#}
         </div>
     </form>
+
+    </div>
+
+    <div class="col s6 offset-s3">
+        <p>Maybe you don't have login? Yes, then... <a href="{% url 'registration_register' %}">Registration</a></p>
 
     </div>
 </div>

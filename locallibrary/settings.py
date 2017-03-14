@@ -24,7 +24,6 @@ SECRET_KEY = '4psf+*j*%ayk=#b2^6)&bjn&=e91+4=c7_k*q7^#o6u)kt=vyu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -40,8 +39,7 @@ REGISTRATION_OPEN = True
 # Application definition
 
 INSTALLED_APPS = [
-    'suit',         # Warning ‘suit’ must be added before ‘django.contrib.admin’
-
+    'django_admin_bootstrapped',    # before <- 'django.contrib.admin'
     'django.contrib.admin',
 
     'django.contrib.sites',
@@ -56,9 +54,9 @@ INSTALLED_APPS = [
     'catalog',          # 'catalog.apps.AppConfig'
     'django_ajax',
     'imagefit',
+    'crispy_forms',
 ]
 
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -158,6 +156,10 @@ IMAGEFIT_ROOT = os.path.join(BASE_DIR, "files")
 IMAGEFIT_EXT_TO_FORMAT = {'.jpg': 'jpeg', '.bmp': 'png'}
 IMAGEFIT_PRESETS = {
     'thumbnail': {'width': 64, 'height': 64, 'crop': True},
-    'my_preset1': {'width': 300, 'height': 220},
-    'my_preset2': {'width': 100},
 }
+
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+
