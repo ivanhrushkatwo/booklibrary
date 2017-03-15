@@ -1,4 +1,4 @@
-# Mini book market
+Mini book market
 ====================
 
 Run project
