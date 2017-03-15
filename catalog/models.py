@@ -5,7 +5,9 @@ from django.urls import reverse
 
 
 class CustomUser(AbstractUser):
-
+    """
+    User model
+    """
     image = models.ImageField(blank=True)
 
     def get_absolute_url(self):
@@ -16,6 +18,7 @@ class CustomUser(AbstractUser):
 
 
 class Language(models.Model):
+
     name = models.CharField(
         max_length=64
     )
@@ -143,7 +146,9 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-
+    """
+    Author's book
+    """
     first_name = models.CharField(
         max_length=100
     )
