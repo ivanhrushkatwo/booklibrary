@@ -27,6 +27,12 @@ def search_category(request, pk):
 
 @login_required
 def like_book(request, pk):
+    """
+    Костиль
+    :param request:
+    :param pk:
+    :return:
+    """
     book = Book.objects.get(id=pk)
     book.rating += 1
     book.save()
@@ -35,6 +41,12 @@ def like_book(request, pk):
 
 @login_required
 def dislike_book(request, pk):
+    """
+    Костиль
+    :param request:
+    :param pk:
+    :return:
+    """
     book = Book.objects.get(id=pk)
     book.dislike += 1
     book.save()
@@ -43,6 +55,12 @@ def dislike_book(request, pk):
 
 @login_required
 def like_author(request, pk):
+    """
+    Костиль
+    :param request:
+    :param pk:
+    :return:
+    """
     author = Author.objects.get(id=pk)
     author.rating += 1
     author.save()
@@ -50,6 +68,12 @@ def like_author(request, pk):
 
 
 def add_to_basket(request, pk):
+    """
+    Костиль
+    :param request:
+    :param pk:
+    :return:
+    """
     goods = request.session.get('goods', [])
     request.session['goods'] = goods
     request.session["goods"].append(pk)
@@ -62,11 +86,21 @@ def add_to_basket(request, pk):
 
 
 def clear_basket(request):
+    """
+    Костиль
+    :param request:
+    :return:
+    """
     request.session["goods"] = []
     return render(request, "catalog/basket.html", {})
 
 
 def basket(request):
+    """
+    Костиль
+    :param request:
+    :return:
+    """
     if request.session.get("goods", False):
         # books = Book.objects.filter(id__in=request.session["goods"])
         books = []
