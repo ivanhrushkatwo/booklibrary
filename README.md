@@ -5,7 +5,7 @@ Run project
 --------------------
 
 * First create virtualenv
-... virtualenv -p /usr/bin/python3 evn_py3
+- virtualenv -p /usr/bin/python3 evn_py3
 ... cd env_py3
 ... source bin/activate
 
