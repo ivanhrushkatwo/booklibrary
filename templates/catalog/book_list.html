@@ -11,7 +11,7 @@
         {% for book in book_list %}
 
         <div class="col s12 m6">
-            <div class="card horizontal">
+            <div class="card horizontal blue-grey lighten-5">
                 <div class="card-image">
                     {% if book.image %}
                         <img class="responsive-img" src="{{ book.image.url|resize:"128x128" }}" alt="">
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="card-action">
-                        <input type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
+                        <input onclick="Materialize.toast('Added to basket', 4000)" type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
                     </div>
                 </div>
             </div>

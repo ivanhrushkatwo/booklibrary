@@ -11,7 +11,6 @@ $(function () {
             type: "GET",
             url: "add_to_basket/" + book_pk,
             success: function (data) {
-                console.log(data);
                 jQuery("#basket").text("Basket " + data.count_goods);
             },
             error: function () {
