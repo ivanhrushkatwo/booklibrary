@@ -71,18 +71,15 @@ def add_to_basket(request, pk):
     """
     Костиль
     :param request:
-    :param pk:
     :return:
     """
+
     goods = request.session.get('goods', [])
     request.session['goods'] = goods
     request.session["goods"].append(pk)
-    # return HttpResponse(json.dumps(request.session["goods"]), content_type="application/json")
-    books = []
-    for book_id in request.session["goods"]:
-        books.append(Book.objects.get(id=book_id))
-    price = sum(book.price for book in books)
-    return render(request, "catalog/basket.html", {"books": books, "price": price})
+    context = {"count_goods": str(len(request.session["goods"]))}
+
+    return JsonResponse(context)
 
 
 def clear_basket(request):

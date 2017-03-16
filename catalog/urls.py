@@ -8,7 +8,11 @@ urlpatterns = [
     url(r'^about$', views.About.as_view(), name='about'),
 
     url(r'^basket$', views.basket, name="basket"),
-    url(r'^add_to_basket/(?P<pk>\d+)$', views.add_to_basket, name="add_to_basket"),
+
+    # Тут треба буде попрацювати над ajax'сом
+    url(r'add_to_basket/(?P<pk>\d+)$', views.add_to_basket, name="add_to_basket"),
+
+
     url(r'^clear_basket/$', views.clear_basket, name="clear_basket"),
 
     url(r'^search_category/(?P<pk>\d+)$', views.search_category, name="search_category"),

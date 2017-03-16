@@ -1,7 +1,6 @@
 {% extends "base_generic.html" %}
 
 {% load imagefit %}
-{% load static %}
 
 {% block content %}
 
@@ -32,16 +31,7 @@
                     </div>
 
                     <div class="card-action">
-{#                        <a class="waves-effect waves-light btn" href="{% url "add_to_basket" book.id %}">#}
-{#                            <i class="material-icons left">shopping_cart</i>Buy#}
-{#                        </a>#}
-
-{#                        <a href="#"><input id="{{ book.id }}" type="submit" class="btn" value="Buy"/></a>#}
-
-                        <form id="add_to_basket" action="{% url "add_to_basket" book.id %}">
-                            <input id="book_id" type="submit" class="btn" value="Add to basket"/>
-                        </form>
-
+                        <input type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
                     </div>
                 </div>
             </div>
