@@ -86,12 +86,12 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'locale': 'ru_RU',
   'fields': 'id, name, email',
 }
-
+SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.8'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 # Facebook
-SOCIAL_AUTH_FACEBOOK_KEY = 'facebook-app-id'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'facebook-app-key'
+SOCIAL_AUTH_FACEBOOK_KEY = '1914622558772874'
+SOCIAL_AUTH_FACEBOOK_SECRET = '550858429fedaaa31fee6c859aa2a9a8'
 
 # Google
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '774304408997-cb9rqt7bb6rk8bmbt6n0tcuso74eu6kt.apps.googleusercontent.com'
