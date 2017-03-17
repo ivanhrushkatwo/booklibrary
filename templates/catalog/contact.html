@@ -1,0 +1,63 @@
+{% extends "base_generic.html" %}
+
+{% block tile %}Contacts{% endblock %}
+
+{% block content %}
+
+    <br>
+<div class="row">
+    <div class="col s12 m6">
+
+        <div class="row">
+            <form action="{% url "send_email_to_admin" %}" method="post" class="col s12">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12 m8">
+                        <i class="material-icons prefix">forum</i>
+                        <input id="name" type="text" name="subject" class="validate">
+                        <label for="name">Subject*</label>
+                    </div>
+                </div>
+
+            <div class="row">
+                <div class="input-field col s12 m8">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="email" name="email" class="validate">
+                    <label for="email">Your Email*</label>
+                </div>
+             </div>
+
+             <div class="row">
+                <div class="input-field col s12 m8">
+                    <i class="material-icons prefix">chat_bubble_outline</i>
+                    <textarea id="massage" name="massage" class="materialize-textarea"></textarea>
+                    <label for="massage">Massage</label>
+                </div>
+             </div>
+            <div class="row">
+                <div class="col s12 m8 offset-m1">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Send massage
+                    <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <div class="col s12 m6">
+        <h2>Our contacts</h2>
+        <ul>
+            <li ><p>+38 (099) 562-25-63</p></li>
+            <li ><p>+38 (067) 562-25-63</p></li>
+            <li ><p>shop@bookmarket.com.rt</p></li>
+            <li ><p>New-York</p></li>
+        </ul>
+    </div>
+
+</div>
+
+
+{% endblock %}

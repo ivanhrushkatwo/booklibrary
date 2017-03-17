@@ -6,6 +6,8 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^about$', views.About.as_view(), name='about'),
+    url(r'^contact$', views.contact, name='contacts'),
+    url(r'^send_email_to_admin/$', views.send_email, name='send_email_to_admin'),
 
     url(r'^basket$', views.basket, name="basket"),
 

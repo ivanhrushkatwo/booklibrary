@@ -1,6 +1,8 @@
 import datetime
 import json
 
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
 from django_ajax.decorators import ajax
 from django.http import JsonResponse
 from django.views import generic
@@ -23,6 +25,29 @@ def index(request):
 def search_category(request, pk):
     books = Book.objects.filter(category=pk)
     return render(request, "catalog/book_list.html", {"book_list": books})
+
+
+def contact(request):
+
+    return render(request, "catalog/contact.html", {})
+
+
+def send_email_to_admin(request):
+    # add ajax response
+    from_email = request.POST.get("email")
+    subject = request.POST.get("subject")
+    massage = request.POST.get("massage")
+    print(from_email, subject, massage)
+    if subject and massage and from_email:
+        try:
+            send_mail(subject, massage, from_email, ['ivanhrushka.py@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return HttpResponseRedirect('/contact/thanks/')
+    else:
+        # In reality we'd use a form class
+        # to get proper validation errors.
+        return HttpResponse('Make sure all fields are entered and valid.')
 
 
 @login_required

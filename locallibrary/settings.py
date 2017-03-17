@@ -30,6 +30,16 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+# ------ Email settings ------------
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ivanhrushka.py@gmail.com'
+EMAIL_HOST_PASSWORD = '#str(Gintama-san(201))'
+DEFAULT_FROM_EMAIL = 'ivanhrushka.py@gmail.com'
+
+# ------ Email settings ------------
 
 AUTH_USER_MODEL = "catalog.CustomUser"
 
