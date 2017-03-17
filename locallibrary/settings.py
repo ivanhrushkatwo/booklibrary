@@ -56,7 +56,16 @@ INSTALLED_APPS = [
     'django_ajax',
     'imagefit',
     'crispy_forms',
+    'disqus',
 ]
+
+# -------------------- DISQUS  Settings  -------------------------------------------------------------------------------
+DISQUS_API_KEY = 'uBMHChAOu9beNC5pt03SDiAZ0DqLFOvVCTmAEVccAzSl06AgPS3RHIVN8fZP6woq'
+DISQUS_WEBSITE_SHORTNAME = 'marketbook'
+# -------------------- End DISQUS Block --------------------------------------------------------------------------------
+
+
+
 # ######################################################################################################################
 # ---------------------------------------------- Social auth ----------------------------------------------------------#
 # ######################################################################################################################
@@ -77,6 +86,7 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'locale': 'ru_RU',
   'fields': 'id, name, email',
 }
+
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 # Facebook
