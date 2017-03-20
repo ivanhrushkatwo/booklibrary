@@ -36,7 +36,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ivanhrushka.py@gmail.com'
-EMAIL_HOST_PASSWORD = '#str(Gintama-san(201))'
+EMAIL_HOST_PASSWORD = 'password'
 DEFAULT_FROM_EMAIL = 'ivanhrushka.py@gmail.com'
 
 # ------ Email settings ------------
