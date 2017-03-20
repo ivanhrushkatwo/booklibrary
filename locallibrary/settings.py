@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
 
     'django.contrib.sites',
-    'registration',     # Before 'django.contrib.auth',
+    'registration',                 # Before 'django.contrib.auth',
     'django.contrib.auth',
 
     'django.contrib.contenttypes',
@@ -61,19 +61,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'social_django',    # Social auth
-    'catalog',          # 'catalog.apps.AppConfig'
+    'social_django',                # Social auth
+    'catalog',                      # 'catalog.apps.AppConfig'
     'django_ajax',
     'imagefit',
     'crispy_forms',
     'disqus',
 ]
 
+
 # -------------------- DISQUS  Settings  -------------------------------------------------------------------------------
 DISQUS_API_KEY = 'uBMHChAOu9beNC5pt03SDiAZ0DqLFOvVCTmAEVccAzSl06AgPS3RHIVN8fZP6woq'
 DISQUS_WEBSITE_SHORTNAME = 'marketbook'
 # -------------------- End DISQUS Block --------------------------------------------------------------------------------
-
 
 
 # ######################################################################################################################

@@ -28,26 +28,25 @@ def search_category(request, pk):
 
 
 def contact(request):
-
     return render(request, "catalog/contact.html", {})
 
 
 def send_email_to_admin(request):
-    # add ajax response
+    # TODO add ajax response
     from_email = request.POST.get("email")
     subject = request.POST.get("subject")
     massage = request.POST.get("massage")
-    print(from_email, subject, massage)
+
     if subject and massage and from_email:
         try:
             send_mail(subject, massage, from_email, ['ivanhrushka.py@gmail.com'])
         except BadHeaderError:
-            return HttpResponse('Invalid header found.')
-        return HttpResponseRedirect('/contact/thanks/')
+            return JsonResponse({"data": "Invalid header found."})
+
+        return JsonResponse({"data": "Message sent successfully"})
     else:
-        # In reality we'd use a form class
-        # to get proper validation errors.
-        return HttpResponse('Make sure all fields are entered and valid.')
+        # return HttpResponse("Make sure all fields are entered and valid.")
+        return JsonResponse({"data": "Make sure all fields are entered and valid."})
 
 
 @login_required
