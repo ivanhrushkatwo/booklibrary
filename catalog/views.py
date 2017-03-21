@@ -50,12 +50,6 @@ def send_email_to_admin(request):
 
 @login_required
 def like_book(request, pk):
-    """
-    Костиль
-    :param request:
-    :param pk:
-    :return:
-    """
     book = Book.objects.get(id=pk)
     book.rating += 1
     book.save()
@@ -64,12 +58,6 @@ def like_book(request, pk):
 
 @login_required
 def dislike_book(request, pk):
-    """
-    Костиль
-    :param request:
-    :param pk:
-    :return:
-    """
     book = Book.objects.get(id=pk)
     book.dislike += 1
     book.save()
@@ -78,12 +66,6 @@ def dislike_book(request, pk):
 
 @login_required
 def like_author(request, pk):
-    """
-    Костиль
-    :param request:
-    :param pk:
-    :return:
-    """
     author = Author.objects.get(id=pk)
     author.rating += 1
     author.save()
@@ -91,41 +73,29 @@ def like_author(request, pk):
 
 
 def add_to_basket(request, pk):
-    """
-    Костиль
-    :param request:
-    :return:
-    """
+    goods = request.session.get("goods", {})
 
-    goods = request.session.get('goods', [])
-    request.session['goods'] = goods
-    request.session["goods"].append(pk)
-    context = {"count_goods": str(len(request.session["goods"]))}
-
+    request.session["goods"] = goods
+    if pk not in request.session["goods"]:
+        request.session["goods"][pk] = 1
+    else:
+        request.session["goods"][pk] += 1
+    context = {"count_goods": str(sum(list(request.session["goods"].values())))}
     return JsonResponse(context)
 
 
 def clear_basket(request):
-    """
-    Костиль
-    :param request:
-    :return:
-    """
-    request.session["goods"] = []
+    request.session["goods"] = {}
     return render(request, "catalog/basket.html", {})
 
 
 def basket(request):
-    """
-    Костиль
-    :param request:
-    :return:
-    """
     if request.session.get("goods", False):
-        # books = Book.objects.filter(id__in=request.session["goods"])
         books = []
-        for book_id in request.session["goods"]:
-            books.append(Book.objects.get(id=book_id))
+        for book_id in request.session["goods"].keys():
+            book = Book.objects.get(id=book_id)
+            book.c = request.session["goods"][book_id]
+            books.append(book)
         price = sum(book.price for book in books)
     else:
         books = []

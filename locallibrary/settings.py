@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'imagefit',
     'crispy_forms',
     'disqus',
+    #'getpaid',
 ]
 
 

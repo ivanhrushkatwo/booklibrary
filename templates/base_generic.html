@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
 {% load static %}
-{% load imagefit %}
+{% load i18n %}
 
+{% load imagefit %}
 
 <html lang="en">
 <head>
@@ -17,29 +18,20 @@
 
 </head>
 <body>
-
 <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">#BM</a>
-
         <ul class="right hide-on-med-and-down">
-            <li><a href="{% url "basket" %}"><i class="material-icons left">shopping_cart</i><span id="basket">Basket {{ goods|length }}</span></a></li>
-
+            <li><a href="{% url "basket" %}"><i class="material-icons left">shopping_cart</i><span id="basket">Basket {{ goods }}</span></a></li>
         {% if user.is_authenticated %}
-
             <li><i class="material-icons left">perm_identity</i>{{ user.get_username }}</li>
             <li><a href="{% url 'auth_logout' %}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
-
         {% else %}
-
             <li><a href="{% url 'auth_login' %}"><i class="material-icons right">input</i>Login</a></li>
             <li><a href="{% url 'registration_register' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
-
         {% endif %}
-
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-
         {% if user.is_authenticated %}
             <li><a href="{% url 'auth_logout' %}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
         {% else %}
@@ -49,10 +41,9 @@
             <li><a href="{% url 'books' %}"><i class="material-icons right">class</i>Books</a></li>
             <li><a href="{% url 'authors' %}"><i class="material-icons right">recent_actors</i>Authors</a></li>
             <li><a class="dropdown-button" href="#" data-activates="dropdown-mobile"><i class="material-icons right">clear_all</i>Category<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a class="dropdown-button" href="#" data-activates="dropdown-mobile-sort"><i class="material-icons right">sort_by_alpha</i>Sort by<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="{% url "about" %}"><i class="material-icons right">assignment_ind</i>About us</a></li>
             <br>
-            <li><a href="{% url "basket" %}"><i class="material-icons right">shopping_cart</i><span id="basket">Basket {{ goods|length }}</span></a></li>
+            <li><a href="{% url "basket" %}"><i class="material-icons right">shopping_cart</i><span id="basket">Basket {{ goods }}</span></a></li>
         </ul>
 
         <ul id="dropdown-mobile" class="dropdown-content">
@@ -65,23 +56,18 @@
             <li><a href="#">Price</a></li>
             <li><a href="#">Author</a></li>
         </ul>
-
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-
     </div>
-
 </nav>
 
 <div>
     <nav class="light-green lighten-1">
         <div class="nav-wrapper container">
-
             <ul id="dropdown1" class="dropdown-content">
             {% for category in category_list %}
                 <li><a href="{% url "search_category" category.id %}">{{ category.name }}</a></li>
             {% endfor %}
             </ul>
-
             <ul id="dropdown2" class="dropdown-content">
                 <li><a href="#">TEST</a></li>
                 <li><a href="#">TEST</a></li>
@@ -91,19 +77,12 @@
                 <li><a href="#">Price</a></li>
                 <li><a href="#">Author</a></li>
             </ul>
-
             <ul class="left hide-on-med-and-down">
                 <li><a href="{% url 'books' %}"><i class="material-icons left">class</i>Books</a></li>
                 <li><a href="{% url 'authors' %}"><i class="material-icons left">recent_actors</i>Authors</a></li>
-
                 <li>
                     <a class="dropdown-button" href="#" data-activates="dropdown1">
                         <i class="material-icons left">clear_all</i>Shop by category<i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-button" href="#" data-activates="dropdown3">
-                        <i class="material-icons left">sort_by_alpha</i>Sort by<i class="material-icons right">arrow_drop_down</i>
                     </a>
                 </li>
                 <li>
@@ -112,21 +91,15 @@
                     </a>
                 </li>
             </ul>
-
         </div>
     </nav>
 </div>
 
-
 <div class="container" style="min-height: 500px">
     <div class="col-sm-10">
-
         <!-- MAIN CONTENT -->
-
         {% block content %}{% endblock %}
-
         <!-- END MAIN CONTENT -->
-
         {% block pagination %}
             {% include "catalog/pagination.html" %}
         {% endblock %}
@@ -134,12 +107,9 @@
     </div>
 </div>
 
-<!-- Modal Structure -->
-
 <footer class="page-footer orange">
     <div class="container">
         <div class="row">
-
             <div class="col l2 s12">
                 <h5 class="white-text">Navigation</h5>
                 <ul>
@@ -150,7 +120,6 @@
                     <li><p><a class="white-text" href="{% url "about" %}">About us</a></p></li>
                 </ul>
             </div>
-
             <div class="col l3 s12">
                 <h5 class="white-text">Contacts</h5>
                 <ul>
@@ -161,7 +130,6 @@
                     <li class="white-text"><p>New-York</p></li>
                 </ul>
             </div>
-
             <div class="col l3 s12">
                 <h5 class="white-text">BookMarket.com.rt</h5>
                 <ul>
@@ -171,33 +139,25 @@
                     </li>
                 </ul>
             </div>
-
-        <div class="col l3 s12">
-            <img src="{{ "/media/std_image/liqpay.png" }}" alt="">
-        </div>
-
+            <div class="col l3 s12">
+                <img src="{{ "/media/std_image/liqpay.png" }}" alt="">
+            </div>
         </div>
     </div>
-
     <div class="footer-copyright">
         <div class="container">
             Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
         </div>
     </div>
 </footer>
-
-
     <!--  Scripts-->
     <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
     <script src="{% static "js/app.js" %}"></script>
-
     <script src="{% static "materialize/js/materialize.js" %}"></script>
     <script src="{% static "materialize/js/init.js" %}"></script>
-
     <script>
         $('.carousel.carousel-slider').carousel({fullWidth: true});
     </script>
     <!-- END Scripts -->
-
   </body>
 </html>

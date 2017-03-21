@@ -11,20 +11,14 @@
 
     <br>
     <div class="row">
-
         <div class="col s10 m4">
-            <!-- Promo Content 1 goes here -->
             {% if book.image %}
                 <img class="responsive-img" src="{{ book.image.url|resize:"600x380" }}" alt="">
             {% else %}
                 <img class="responsive-img" src="{{ "/media/std_image/book_std_png.png"|resize:"600x380" }}" alt="">
             {% endif %}
-
         </div>
-
-
         <div class="col s10 m4">
-            <!-- Promo Content 2 goes here -->
             <h4><strong>{{ book.title }}</strong></h4>
             <table>
                 <tbody>
@@ -44,16 +38,12 @@
                     <td><strong>Language</strong></td>
                     <td>{{ book.language }}</td>
                 </tr>
-
                 </tbody>
             </table>
 
             <hr>
-
-
             <p><strong>{{ book.rating }} </strong> people like this book</p>
             <p><strong>{{ book.dislike }} </strong> people dislike this book</p>
-
              {% if user.is_authenticated %}
                  <a id="like" class="waves-effect waves-light btn" href="{% url "like_book" book.id %}"><i class="material-icons left">thumb_up</i>Like</a>
                  <a id="like" class="waves-effect waves-light btn" href="{% url "dislike_book" book.id %}"><i class="material-icons left">thumb_down</i>Dislike</a>
@@ -62,7 +52,7 @@
         <!-- Social share block -->
         <!-- Change on deploy server -->
         <!-- Need add domain in data-href-->
-            <div class="fb-share-button" data-href="http://localhost:8090/catalog/{{ book.get_absolute_url }}"
+            <div style="display: block; padding-top: 10px" class="fb-share-button" data-href="http://localhost:8090/catalog/{{ book.get_absolute_url }}"
             data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore"
             target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Поделиться</a>
             </div>
@@ -80,13 +70,9 @@
                 <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
                 <script type="IN/Share" data-url="http://localhost:8090/catalog/{{ book.get_absolute_url }}" data-counter="right"></script>
             </div>
-
-        <!-- -->
-
+        <!-- Social share block END -->
         </div>
-
         <div class="col s10 m4">
-
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
                     <span class="card-title"><strong>Price: {{ book.price }} $</strong></span>
@@ -99,10 +85,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
     <div class="row">
         <div class="col s8 m12">
             <h5>About book</h5>
@@ -111,20 +94,15 @@
             <br>
         </div>
     </div>
-
     <div class="row">
         <div class="col s8 m12">
         {% for i in book.genre.all %}
-
             <div class="chip">#{{ i }}</div>
-
         {% endfor %}
         </div>
     </div>
 
-
     <div id="fb-root" data-href="http://localhost:8090/catalog/{{ book.get_absolute_url }}" data-layout="button_count">
-
     </div>
 
     <script>(function(d, s, id) {
@@ -136,26 +114,22 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-
 <div id="disqus_thread"></div>
 
-
 <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'marketbook'; // required: replace example with your forum shortname
-
-    // The following are highly recommended additional parameters. Remove the slashes in front to use.
-    // var disqus_identifier = 'unique_dynamic_id_1234';
-    // var disqus_url = 'http://example.com/permalink-to-page.html';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
+    var disqus_shortname = 'marketbook';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<noscript>
+    Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 

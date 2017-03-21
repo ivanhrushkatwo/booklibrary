@@ -3,6 +3,8 @@ django-registration-redux==1.4
 social-auth-app-django==1.1.0
 django-disqus==0.5
 django-admin-bootstrapped==2.5.7
+django-getpaid==1.7.6
+celery==4.0.2
 Pillow
 django-imagefit
 django-crispy-forms==1.6.1
