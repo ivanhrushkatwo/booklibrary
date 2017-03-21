@@ -9,6 +9,7 @@
     <div class="col s12 m6">
 
         <div class="row">
+            <h3>Send massage</h3>
             <form id="send-massage-to-admin" action="{% url "send_email_to_admin" %}" method="post" class="col s12">
                 {% csrf_token %}
                 <div class="row">
@@ -42,13 +43,12 @@
                 </div>
             </div>
 
-
             </form>
         </div>
     </div>
 
     <div class="col s12 m6">
-        <h2>Our contacts</h2>
+        <h3>Our contacts</h3>
         <ul>
             <li ><p>+38 (099) 562-25-63</p></li>
             <li ><p>+38 (067) 562-25-63</p></li>

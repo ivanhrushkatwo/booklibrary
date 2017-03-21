@@ -59,6 +59,29 @@
                  <a id="like" class="waves-effect waves-light btn" href="{% url "dislike_book" book.id %}"><i class="material-icons left">thumb_down</i>Dislike</a>
              {% endif %}
 
+        <!-- Social share block -->
+        <!-- Change on deploy server -->
+        <!-- Need add domain in data-href-->
+            <div class="fb-share-button" data-href="http://localhost:8090/catalog/{{ book.get_absolute_url }}"
+            data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore"
+            target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Поделиться</a>
+            </div>
+
+            <div style="padding-top: 10px">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost:8090/catalog/{{ book.get_absolute_url }}"
+                   data-hashtags="book">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                   if(!d.getElementById(id)){js=d.createElement(s);
+                   js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                   fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                </script>
+            </div>
+            <div style="padding-top: 5px">
+                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                <script type="IN/Share" data-url="http://localhost:8090/catalog/{{ book.get_absolute_url }}" data-counter="right"></script>
+            </div>
+
+        <!-- -->
 
         </div>
 
@@ -98,6 +121,21 @@
         {% endfor %}
         </div>
     </div>
+
+
+    <div id="fb-root" data-href="http://localhost:8090/catalog/{{ book.get_absolute_url }}" data-layout="button_count">
+
+    </div>
+
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
 
 <div id="disqus_thread"></div>
 

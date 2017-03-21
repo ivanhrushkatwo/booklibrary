@@ -45,8 +45,7 @@ def send_email_to_admin(request):
 
         return JsonResponse({"data": "Message sent successfully"})
     else:
-        # return HttpResponse("Make sure all fields are entered and valid.")
-        return JsonResponse({"data": "Make sure all fields are entered and valid."})
+        return JsonResponse({"data": "false"})
 
 
 @login_required
