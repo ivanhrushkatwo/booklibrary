@@ -23,7 +23,7 @@
                 <div class="card-stacked">
 
                     <div class="card-content">
-                        <h4><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h4>
+                        <h4 class="flow-text"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h4>
                         <p><strong>Author:</strong> {{book.author}}</p>
                         <p><strong>Category:</strong> {{book.category }}</p>
                         <p><strong>Rating:</strong> {{ book.rating }}</p>
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="card-action">
-                        <input onclick="Materialize.toast('Added to basket', 4000)" type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
+                        <input onclick="Materialize.toast('Added to basket', 2000)" type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
                     </div>
                 </div>
             </div>

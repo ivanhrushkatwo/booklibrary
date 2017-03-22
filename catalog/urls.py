@@ -9,13 +9,15 @@ urlpatterns = [
     url(r'^contact$', views.contact, name='contacts'),
     url(r'^send_email_to_admin/$', views.send_email_to_admin, name='send_email_to_admin'),
 
+
+    url(r'^delete_from_basket/(?P<pk>\d+)$', views.delete_from_basket, name="delete_from_basket"),
+
     url(r'^basket$', views.basket, name="basket"),
 
-    # Тут треба буде попрацювати над ajax'сом
     url(r'add_to_basket/(?P<pk>\d+)$', views.add_to_basket, name="add_to_basket"),
 
-
     url(r'^clear_basket/$', views.clear_basket, name="clear_basket"),
+
 
     url(r'^search_category/(?P<pk>\d+)$', views.search_category, name="search_category"),
 

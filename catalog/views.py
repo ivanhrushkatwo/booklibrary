@@ -12,6 +12,9 @@ from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
+from django.views.decorators.csrf import csrf_protect
 
 from .models import Book, Author
 from .forms import UserCustomForm
@@ -89,6 +92,22 @@ def clear_basket(request):
     return render(request, "catalog/basket.html", {})
 
 
+# @csrf_protect <- if ajax request post
+def delete_from_basket(request, pk):
+    if request.method == "GET":
+
+        if pk in request.session["goods"]:
+            request.session.modified = True
+            del request.session["goods"][pk]
+            return JsonResponse(
+                {
+                    "count_goods": str(sum(list(request.session["goods"].values()))),
+                    "data": "Done from python view delete_from_basket!",
+                 }
+            )
+    return redirect('basket')
+
+
 def basket(request):
     if request.session.get("goods", False):
         books = []
@@ -96,11 +115,13 @@ def basket(request):
             book = Book.objects.get(id=book_id)
             book.c = request.session["goods"][book_id]
             books.append(book)
-        price = sum(book.price for book in books)
+        price = sum(book.price * book.c for book in books)
+        num_of_book = sum(book.c for book in books)
     else:
         books = []
         price = 0
-    return render(request, "catalog/basket.html", {"books": books, "price": price})
+        num_of_book = 0
+    return render(request, "catalog/basket.html", {"books": books, "price": price, "num_of_book": num_of_book})
 
 
 class About(TemplateView):

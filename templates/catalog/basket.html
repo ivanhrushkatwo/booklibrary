@@ -9,13 +9,25 @@
             <div class="card blue-grey darken-5">
                 <div class="card-content white-text">
                     <span class="card-title"><strong>Price: {{ price }}$</strong></span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.
+                    <p>In your basket {{ num_of_book }} {% if num_of_book == 1 %} book. {% else %} books.
+                    {% endif %}
+                    <ul>
+                        {% for book in books %}
+                            <li>One {{ book.title }} = {{ book.price }} $</li>
+                        {% endfor %}
+                    </ul>
                     </p>
                 </div>
                 <div class="card-action">
-                   <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">shopping_cart</i>Buy this books</a>
-                   <a class="right" href="{% url "clear_basket" %}">Clear basket</a>
+                   <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">shopping_cart</i>
+                       Buy this
+                       {% if num_of_book == 1 %}
+                            book
+                       {% else %}
+                           books
+                       {% endif %}
+                   </a>
+                   <a href="{% url "clear_basket" %}">Clear basket</a>
                 </div>
             </div>
         </div>
@@ -23,7 +35,7 @@
     <div class="row">
     {% for book in books %}
 
-    <div class="col s6 m6">
+    <div class="col s12 m6 book-id-{{ book.id }} not-empty">
         <div class="card horizontal blue-grey lighten-5">
             <div class="card-image">
                 {% if book.image %}
@@ -34,13 +46,18 @@
             </div>
             <div class="card-stacked">
                 <div class="card-content">
-                    <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
                     <p><strong>Author:</strong> {{book.author}}</p>
                     <p><strong>Category:</strong> {{book.category }}</p>
-                    <p><strong>Count:</strong> {{book.c }}</p>
+                    <p><label for="count_book"><strong>Count</strong></label></p>
+                    <!-- TODO need add function -->
+                    <div style="display: inline;">-</div>
+                        <input id="count_book" pattern="[0-9]*" type="number" name="" value="{{ book.c }}" style="width: 32px; text-align: center">
+                    <div style="display: inline;">+</div>
                 </div>
                 <div class="card-action">
-                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                    <input type="submit" class="btn del-book-id" value="Delete from basket" data-id="{{ book.id }}">
+{#                    <a href="{% url "delete_from_basket" book.id %}">Delete from basket</a>#}
                 </div>
             </div>
         </div>
@@ -59,7 +76,7 @@
                     <div class="card-content">
                         <h1 class="header">Your basket is empty</h1>
                         <p>Your basket is empty now. <br>
-                            You can go to the section with <a href="{% url "books" %}">books</a>  and add them to your cart.
+                            You can go to the section with <a href="{% url "books" %}">books</a>  and add them to your basket.
                         </p>
                     </div>
                     <div class="card-action">
