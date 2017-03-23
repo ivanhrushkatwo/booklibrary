@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^send_email_to_admin/$', views.send_email_to_admin, name='send_email_to_admin'),
 
 
-    url(r'^delete_from_basket/(?P<pk>\d+)$', views.delete_from_basket, name="delete_from_basket"),
+    url(r'^delete_from_basket/$', views.delete_from_basket, name="delete_from_basket"),
 
     url(r'^basket$', views.basket, name="basket"),
 

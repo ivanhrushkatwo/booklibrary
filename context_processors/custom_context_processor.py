@@ -12,5 +12,5 @@ def category(request):
 
 
 def basket_with_goods(request):
-    goods = request.session.get('goods')
+    goods = request.session.get('goods', {})
     return {"goods": sum(goods.values())}

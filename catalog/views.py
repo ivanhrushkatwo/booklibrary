@@ -92,17 +92,15 @@ def clear_basket(request):
     return render(request, "catalog/basket.html", {})
 
 
-# @csrf_protect <- if ajax request post
-def delete_from_basket(request, pk):
-    if request.method == "GET":
-
+def delete_from_basket(request):
+    if request.method == "POST":
+        pk = request.POST["pk"]
         if pk in request.session["goods"]:
             request.session.modified = True
             del request.session["goods"][pk]
             return JsonResponse(
                 {
                     "count_goods": str(sum(list(request.session["goods"].values()))),
-                    "data": "Done from python view delete_from_basket!",
                  }
             )
     return redirect('basket')
@@ -114,6 +112,7 @@ def basket(request):
         for book_id in request.session["goods"].keys():
             book = Book.objects.get(id=book_id)
             book.c = request.session["goods"][book_id]
+            book.amount = book.c * book.price
             books.append(book)
         price = sum(book.price * book.c for book in books)
         num_of_book = sum(book.c for book in books)

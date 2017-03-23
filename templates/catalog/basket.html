@@ -1,5 +1,6 @@
 {% extends "base_generic.html" %}
 
+{% load static %}
 {% load imagefit %}
 
 
@@ -8,15 +9,7 @@
         <div class="col s10 m6">
             <div class="card blue-grey darken-5">
                 <div class="card-content white-text">
-                    <span class="card-title"><strong>Price: {{ price }}$</strong></span>
-                    <p>In your basket {{ num_of_book }} {% if num_of_book == 1 %} book. {% else %} books.
-                    {% endif %}
-                    <ul>
-                        {% for book in books %}
-                            <li>One {{ book.title }} = {{ book.price }} $</li>
-                        {% endfor %}
-                    </ul>
-                    </p>
+                    <span class="card-title"><strong id="price">Price: <span class="amount-of-books">{{ price }}</span>$</strong></span>
                 </div>
                 <div class="card-action">
                    <a class="waves-effect waves-light btn" href="#"><i class="material-icons left">shopping_cart</i>
@@ -49,15 +42,21 @@
                     <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
                     <p><strong>Author:</strong> {{book.author}}</p>
                     <p><strong>Category:</strong> {{book.category }}</p>
-                    <p><label for="count_book"><strong>Count</strong></label></p>
+                    <p><strong>Price for a one book: - </strong><span>{{ book.price }}</span></p>
+                    <p><strong>Price for a {{ book.c }} books: - </strong><span>{{ book.amount }}</span></p>
                     <!-- TODO need add function -->
                     <div style="display: inline;">-</div>
-                        <input id="count_book" pattern="[0-9]*" type="number" name="" value="{{ book.c }}" style="width: 32px; text-align: center">
+                        <span class="center">{{ book.c }}</span>
+
                     <div style="display: inline;">+</div>
                 </div>
                 <div class="card-action">
                     <input type="submit" class="btn del-book-id" value="Delete from basket" data-id="{{ book.id }}">
-{#                    <a href="{% url "delete_from_basket" book.id %}">Delete from basket</a>#}
+                </div>
+                <div class="info-book-id-{{ book.id }}" style="display: none">
+                    <div class="hide-price-book-id-{{ book.id }}">{{ book.price }}</div>
+                    <div class="hide-book-id-{{ book.id }}">{{ book.id }}</div>
+                    <div class="hide-book-amount-id-{{ book.id }}">{{ book.amount }}</div>
                 </div>
             </div>
         </div>
@@ -68,7 +67,7 @@
 
     {% else %}
         <div class="col s12 m7">
-            <div class="card horizontal">
+            <div class="card horizontal blue-grey lighten-5">
                 <div class="card-image">
                     <img class="responsive-img" src="{{ "/media/std_image/empty_basket.png"|resize:"256x256" }}">
                 </div>
@@ -86,5 +85,45 @@
             </div>
         </div>
     {% endif %}
+
+    <script type="text/javascript">
+    // delete book from basket
+    $(".del-book-id").on("click", function (e) {
+        e.preventDefault();
+
+        let book_pk = $(e.currentTarget).data("id");
+        $.ajax({
+            data: {
+                pk: book_pk,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            type: "POST",
+            url: "{% url "delete_from_basket" %}",
+            success: function (data) {
+                jQuery('.book-id-' + book_pk).animate({
+                        opacity: 0.50,
+                        left: "+=10",
+                        height: "toggle"
+                      }, 500, function() {
+                        jQuery("#basket").text("Basket " + data['count_goods']);
+
+                        let amoutnBs = parseInt(jQuery(".amount-of-books").html());
+                        let amoutn =   parseInt(jQuery(".hide-book-amount-id-" + book_pk).html());
+                        let s = amoutnBs - amoutn;
+                        jQuery(".amount-of-books").text(s);
+
+                        jQuery('.book-id-' + book_pk).remove();
+                        let basketContent = jQuery('.not-empty');
+                        if (basketContent.length < 1) {
+                            window.open('http://localhost:8090/catalog/basket', "_self")
+                        }
+                      });
+                },
+            error: function (er) {
+                console.log(er)
+            }
+        })
+    });
+    </script>
 
 {% endblock %}

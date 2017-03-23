@@ -15,12 +15,21 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet"  href="{% static "materialize/css/materialize.css" %}">
     <link type="text/css" rel="stylesheet" href="{% static "materialize/css/style.css" %}">
+    <!-- End CSS -->
+    <!--  Scripts-->
+    <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
+    <script src="{% static "js/app.js" %}"></script>
+    <script src="{% static "materialize/js/materialize.js" %}"></script>
+    <script src="{% static "materialize/js/init.js" %}"></script>
+    <!-- END Scripts -->
+
+
 </head>
 <body>
 <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">#BM</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="{% url "basket" %}"><i class="material-icons left">shopping_cart</i><span id="basket">Basket {{ goods }}</span></a></li>
+            <li><a href="{% url "basket" %}"><i class="material-icons right">shopping_cart</i><span id="basket">Basket {{ goods }}</span></a></li>
         {% if user.is_authenticated %}
             <li><i class="material-icons left">perm_identity</i>{{ user.get_username }}</li>
             <li><a href="{% url 'auth_logout' %}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
@@ -149,14 +158,10 @@
         </div>
     </div>
 </footer>
-    <!--  Scripts-->
-    <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
-    <script src="{% static "js/app.js" %}"></script>
-    <script src="{% static "materialize/js/materialize.js" %}"></script>
-    <script src="{% static "materialize/js/init.js" %}"></script>
+
     <script>
         $('.carousel.carousel-slider').carousel({fullWidth: true});
     </script>
-    <!-- END Scripts -->
-  </body>
+
+</body>
 </html>
