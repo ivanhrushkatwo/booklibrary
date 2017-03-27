@@ -1,19 +1,6 @@
 from django import forms
 
-from django.forms import ModelForm
-from .models import Book, CustomUser, Author
-from django.core.exceptions import ValidationError
-
-from django.utils.translation import ugettext_lazy as _
-import datetime  # for checking renewal date range.
-
-
-class BookModelForm(ModelForm):
-    author = forms.ChoiceField(choices=Author.objects.all(), widget=forms.Select())
-
-    class Meta:
-        model = Book
-        fields = ("title", "author", "summary", "isbn", "genre", "language", "image")
+from .models import CustomUser
 
 
 class UserCustomForm(forms.ModelForm):
