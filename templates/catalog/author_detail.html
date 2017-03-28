@@ -36,13 +36,8 @@
     {% if author.biography %}
         <p><strong>Biography: </strong>{{ author.biography }}</p>
     {% endif %}
-        <p><strong>{{ author.rating }} </strong> people like this author</p>
 
     <hr>
-
-        {% if user.is_authenticated %}
-            <a class="waves-effect waves-light btn" href="{% url "like_author" author.id %}"><i class="material-icons left">thumb_up</i>Good author</a>
-        {% endif %}
 
     </div>
 

@@ -45,15 +45,19 @@
                     <p><strong>Price for a one book: - </strong><span>{{ book.price }}</span></p>
                     <p><strong>Price for a {{ book.c }} books: - </strong><span>{{ book.amount }}</span></p>
                     <!-- TODO need add function -->
-                    <div style="display: inline;">-</div>
-                        <span class="center">{{ book.c }}</span>
-
-                    <div style="display: inline;">+</div>
+                    <div style="display: inline;">
+                        <input class="btn" type="button" value="+">
+                    </div>
+                        <a class="waves-effect waves-light btn blue-grey darken-5"><span class="center">{{ book.c }}</span></a>
+                    <div style="display: inline;">
+                        <input class="btn" type="button" value="-">
+                    </div>
                 </div>
                 <div class="card-action">
                     <input type="submit" class="btn del-book-id" value="Delete from basket" data-id="{{ book.id }}">
                 </div>
                 <div class="info-book-id-{{ book.id }}" style="display: none">
+
                     <div class="hide-price-book-id-{{ book.id }}">{{ book.price }}</div>
                     <div class="hide-book-id-{{ book.id }}">{{ book.id }}</div>
                     <div class="hide-book-amount-id-{{ book.id }}">{{ book.amount }}</div>

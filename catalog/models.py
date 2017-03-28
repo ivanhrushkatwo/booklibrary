@@ -92,6 +92,11 @@ class Book(models.Model):
         verbose_name="In stock"
     )
 
+    number_book_in_stock = models.IntegerField(
+        default=0,
+        verbose_name="The number of books in stock"
+    )
+
     price = models.IntegerField(
         default=0,
         verbose_name="Price"

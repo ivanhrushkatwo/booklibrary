@@ -66,14 +66,6 @@ def dislike_book(request, pk):
     return render(request, "catalog/book_detail.html", {"book": book})
 
 
-@login_required
-def like_author(request, pk):
-    author = Author.objects.get(id=pk)
-    author.rating += 1
-    author.save()
-    return render(request, "catalog/author_detail.html", {"author": author})
-
-
 def add_to_basket(request, pk):
     goods = request.session.get("goods", {})
 
