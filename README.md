@@ -20,7 +20,7 @@ $ git clone https://github.com/ivanhrushkatwo/booklibrary.git
 
 3. Install dependencies.
 ```sh
-$ cd locallibrary
+$ cd booklibrary
 $ pip install -r requirements.txt
 ```
 

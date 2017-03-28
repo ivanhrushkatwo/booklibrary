@@ -4,7 +4,6 @@
     <list default="true" id="8d737956-5778-42ec-92a0-0c8b667ada05" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catalog/author_list.html" afterPath="$PROJECT_DIR$/templates/catalog/author_list.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -135,7 +134,7 @@
       <file leaf-file-name="author_list.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/catalog/author_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
+            <state relative-caret-position="210">
               <caret line="11" column="39" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
               <folding>
                 <marker date="1490711362313" expanded="true" signature="898:951" ph="..." />
@@ -264,6 +263,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -506,7 +506,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1021,7 +1020,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490711329817</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added new button in basket and one new field in models (Book)">
+      <created>1490711554167</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1490711554167</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1037,7 +1043,7 @@
     <frame x="58" y="-11" width="1863" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23801653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="771" y="59" width="377" height="921" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24077135" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="771" y="59" width="377" height="921" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29791895" sideWeight="0.5064034" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1085,7 +1091,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed list book and author. added new button on nav bar." />
     <MESSAGE value="add on main page top-6 book. fixed registration." />
     <MESSAGE value="add on main page top-6 book. fixed registration. added django-crispy-form" />
     <MESSAGE value="modify README" />
@@ -1110,7 +1115,8 @@
     <MESSAGE value="fixed ajax-request for basket" />
     <MESSAGE value="fixed mini bugs" />
     <MESSAGE value="Added new button in basket :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new button in basket :)" />
+    <MESSAGE value="Added new button in basket and one new field in models (Book)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new button in basket and one new field in models (Book)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1401,8 +1407,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="168">
-            <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <first_editor relative-caret-position="462">
+            <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1417,7 +1423,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/catalog/author_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="210">
           <caret line="11" column="39" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding>
             <marker date="1490711362313" expanded="true" signature="898:951" ph="..." />
