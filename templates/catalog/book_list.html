@@ -5,45 +5,47 @@
 {% block content %}
 
     {% if book_list %}
-
-    <div class="row">
-
-        {% for book in book_list %}
-
-        <div class="col s12 m6">
-            <div class="card horizontal blue-grey lighten-5">
-                <div class="card-image">
-                    {% if book.image %}
-                        <img class="responsive-img" src="{{ book.image.url|resize:"128x128" }}" alt="">
-                    {% else %}
-                        <img class="responsive-img" src="{{ "/media/std_image/book_std_png.png"|resize:"128x128" }}">
-                    {% endif %}
-                </div>
-
-                <div class="card-stacked">
-
-                    <div class="card-content">
-                        <h4 class="flow-text"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h4>
-                        <p><strong>Author:</strong> {{book.author}}</p>
-                        <p><strong>Category:</strong> {{book.category }}</p>
-                        <p><strong>Rating:</strong> {{ book.rating }}</p>
-                        <p><strong>Price: {{ book.price }} $</strong></p>
+        <div class="row">
+            {% for book in book_list %}
+                <div class="col s12 m6">
+                    <div class="card horizontal blue-grey lighten-5">
+                        <div class="card-image">
+                            {% if book.image %}
+                                <img class="responsive-img" src="{{ book.image.url|resize:"128x128" }}" alt="">
+                            {% else %}
+                                <img class="responsive-img" src="{{ "/media/std_image/book_std_png.png"|resize:"128x128" }}">
+                            {% endif %}
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h4 class="flow-text"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h4>
+                                <p><strong>Author:</strong> {{book.author}}</p>
+                                <p><strong>Category:</strong> {{book.category }}</p>
+                                <p><strong>Rating:</strong> {{ book.rating }}</p>
+                                <p><strong>Price: {{ book.price }} $</strong></p>
+                            </div>
+                            <div class="card-action">
+                                <input onclick="Materialize.toast('Added to basket', 2000)" type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="card-action">
-                        <input onclick="Materialize.toast('Added to basket', 2000)" type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card blue-grey lighten-5">
+                    <div class="card-content">
+                        <span class="card-title">Sorry about that.</span>
+                        <p>There are no books in the library.</p>
+                    </div>
+                        <div class="card-action">
+                        <a href="{% url "send_email_to_admin" %}">Write to us</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        {% endfor %}
-
-    </div>
-    {% else %}
-
-        <p>There are no books in the library.</p>
-
     {% endif %}
 
 {% endblock %}
