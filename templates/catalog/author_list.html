@@ -5,35 +5,35 @@
 
 {% block content %}
 
-    {% if author_list %}
+{% if author_list %}
     <div class="row">
-      {% for author in author_list %}
-        <div class="col s12 m6">
-          <div class="card horizontal">
-            <div class="card-image">
-                {% if author.image %}
-                    <img class="responsive-img" src="{{ author.image.url|resize:"128x180" }}" alt="">
-                {% else %}
-                    <img class="responsive-img" src="{{ "/media/std_image/authorexample.png"|resize:"128x180" }}" alt="">
-                {% endif %}
-            </div>
+        {% for author in author_list %}
+            <div class="col s12 m6">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        {% if author.image %}
+                            <img class="responsive-img" src="{{ author.image.url|resize:"128x180" }}" alt="">
+                        {% else %}
+                            <img class="responsive-img" src="{{ "/media/std_image/authorexample.png"|resize:"128x180" }}" alt="">
+                        {% endif %}
+                    </div>
 
-            <div class="card-stacked">
-
-                <div class="card-content">
-                    <h5><a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a></h5>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h5><a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a></h5>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ author.get_absolute_url }}">More info</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-action">
-                    <a href="{{ author.get_absolute_url }}">More info</a>
-                </div>
-
             </div>
-        </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
     </div>
     {% else %}
-      <p>There are no author in the library.</p>
-    {% endif %}
+    <div>
+        <p>There are no author in the library.</p>
+    </div>
+{% endif %}
 
 {% endblock %}
