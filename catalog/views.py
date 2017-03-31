@@ -78,6 +78,18 @@ def add_to_basket(request, pk):
     return JsonResponse(context)
 
 
+def delete_one_book_from_basket(request, pk):
+    request.session.modified = True
+    request.session["goods"][pk] -= 1
+    print(request.session["goods"][pk])
+    if request.session["goods"][pk] == 0:
+        del request.session["goods"][pk]
+        context = {"count_goods": str(sum(list(request.session["goods"].values()))), "empty": "true"}
+        return JsonResponse(context)
+    context = {"count_goods": str(sum(list(request.session["goods"].values())))}
+    return JsonResponse(context)
+
+
 def clear_basket(request):
     request.session["goods"] = {}
     return render(request, "catalog/basket.html", {})

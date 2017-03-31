@@ -139,6 +139,13 @@ class Book(models.Model):
         blank=True,
     )
 
+    free_sampler_pdf_file = models.FileField(
+        upload_to="simple_PDF_files",
+        verbose_name="Free pdf sampler",
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
         return self.title
 
@@ -151,9 +158,7 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-    """
-    Author's book
-    """
+
     first_name = models.CharField(
         max_length=100
     )

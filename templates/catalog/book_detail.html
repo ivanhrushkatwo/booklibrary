@@ -49,6 +49,7 @@
                  <a id="like" class="waves-effect waves-light btn" href="{% url "dislike_book" book.id %}"><i class="material-icons left">thumb_down</i>Dislike</a>
              {% endif %}
 
+
         <!-- Social share block -->
         <!-- Change on deploy server -->
         <!-- Need add domain in data-href-->
@@ -84,6 +85,15 @@
                    <input onclick="Materialize.toast('Added to basket', 3000)" type="submit" class="btn book-pk" data-id="{{ book.id }}" value="Add to basket"/>
                 </div>
             </div>
+            {% if book.free_sampler_pdf_file %}
+                <div>
+                    <p>This book have free sampler: <a href="#">Download free sampler</a></p>
+                </div>
+             {% else %}
+                 <div>
+                    <p>This book haven't free sampler</p>
+                </div>
+             {% endif %}
         </div>
     </div>
     <div class="row">
