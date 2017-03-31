@@ -22,8 +22,11 @@ urlpatterns = [
     url(r'^search_category/(?P<pk>\d+)$', views.search_category, name="search_category"),
 
     url(r'^books/$', views.BookListView.as_view(), name='books'),
-
     url(r'^book/(?P<pk>\d+)$', views.BookDetailView.as_view(), name='book-detail'),
+
+    url(r'^download_sample/(?P<pk>\d+)$', views.download_sample, name='download_sample'),
+
+
 
     url(r'^like_book/(?P<pk>\d+)$', views.like_book, name="like_book"),
     url(r'^dislike_book/(?P<pk>\d+)$', views.dislike_book, name="dislike_book"),

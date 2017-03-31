@@ -1,8 +1,12 @@
+import os
 import datetime
 
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django_ajax.decorators import ajax
+from django.http import StreamingHttpResponse
+from wsgiref.util import FileWrapper
+
 from django.http import JsonResponse
 from django.views import generic
 from django.shortcuts import render, HttpResponse
@@ -124,6 +128,15 @@ def basket(request):
         price = 0
         num_of_book = 0
     return render(request, "catalog/basket.html", {"books": books, "price": price, "num_of_book": num_of_book})
+
+
+def download_sample(request, pk):
+    pth = Book.objects.get(id=pk)
+    file = pth.free_sampler_pdf_file.path
+    resp = StreamingHttpResponse(FileWrapper(open(file, 'rb'), 8192), content_type="application/pdf")
+    resp['Content-Length'] = os.path.getsize(file)
+    resp["Content-Disposition"] = "attachment; filename=" + file
+    return resp
 
 
 class About(TemplateView):

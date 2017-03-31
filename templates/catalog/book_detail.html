@@ -87,7 +87,7 @@
             </div>
             {% if book.free_sampler_pdf_file %}
                 <div>
-                    <p>This book have free sampler: <a href="#">Download free sampler</a></p>
+                    <p>This book have free sampler: <a href="{% url "download_sample" book.id %}">Download free sampler</a></p>
                 </div>
              {% else %}
                  <div>
