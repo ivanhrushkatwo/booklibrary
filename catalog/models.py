@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.contrib.postgres.fields import ArrayField
 
 
 class CustomUser(AbstractUser):
@@ -65,6 +66,22 @@ class GenreBook(models.Model):
         verbose_name_plural = "Genres of books"
 
 
+class Publisher(models.Model):
+    title = models.CharField(
+        verbose_name="Publisher",
+        max_length=128
+    )
+
+    description = models.TextField(
+        verbose_name="Description",
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.title
+
+
 class Book(models.Model):
 
     title = models.CharField(
@@ -80,6 +97,21 @@ class Book(models.Model):
     category = models.ForeignKey(
         CategoryBook,
         models.PROTECT,
+    )
+
+    publisher = models.ForeignKey(
+        Publisher,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+    )
+
+    pub_year = models.IntegerField(
+        verbose_name="Year of publishers"
+    )
+
+    pages = models.IntegerField(
+        verbose_name="the number of pages"
     )
 
     summary = models.TextField(
@@ -100,17 +132,6 @@ class Book(models.Model):
     price = models.IntegerField(
         default=0,
         verbose_name="Price"
-    )
-
-    rating = models.IntegerField(
-        default=0,
-        verbose_name="Rating"
-    )
-
-    dislike = models.IntegerField(
-        default=0,
-        verbose_name="Dislike",
-
     )
 
     isbn = models.CharField(
@@ -189,11 +210,6 @@ class Author(models.Model):
         verbose_name="Author image",
         null=True,
         blank=True
-    )
-
-    rating = models.IntegerField(
-        default=0,
-        verbose_name="Rating"
     )
 
     def get_absolute_url(self):

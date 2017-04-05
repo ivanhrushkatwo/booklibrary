@@ -58,7 +58,7 @@ $(function () {
                     jQuery('.book-id-' + book_pk).remove();
                     let basketContent = jQuery('.not-empty');
                         if (basketContent.length < 1) {
-                            window.open('http://localhost:8090/catalog/basket', "_self")
+                            window.open('http://10.110.0.10:8000/catalog/basket', "_self")
                         } else {
                             return false
                         }
@@ -85,7 +85,7 @@ jQuery('#send-massage-to-admin').submit(function(e) {
                alert('Make sure all fields are entered and valid.')
            } else {
            alert('Massage send!\n' + data['data']);
-           window.open('http://localhost:8090/catalog/', '_self');
+           window.open('http://10.110.0.10:8000/catalog/', '_self');
            }
        },
        error: function (error) {

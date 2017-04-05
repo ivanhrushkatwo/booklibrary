@@ -1,30 +1,19 @@
 import os
-import datetime
 
-from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
-from django_ajax.decorators import ajax
-from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper
-
+from django.core.mail import send_mail, BadHeaderError
+from django.http import StreamingHttpResponse
 from django.http import JsonResponse
 from django.views import generic
-from django.shortcuts import render, HttpResponse
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import render
 from django.views.generic.base import TemplateView
-from django.urls import reverse_lazy
-from django.views.generic.edit import FormView
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from django.core.urlresolvers import reverse
-from django.views.decorators.csrf import csrf_protect
 
 from .models import Book, Author
-from .forms import UserCustomForm
 
 
 def index(request):
-    books = Book.objects.order_by("-rating")[:6]
+    books = Book.objects.all()[:6]
     return render(request, 'index.html', {"books": books})
 
 
@@ -38,11 +27,9 @@ def contact(request):
 
 
 def send_email_to_admin(request):
-    # TODO add ajax response
     from_email = request.POST.get("email")
     subject = request.POST.get("subject")
     massage = request.POST.get("massage")
-
     if subject and massage and from_email:
         try:
             send_mail(subject, massage, from_email, ['ivanhrushka.py@gmail.com'])
@@ -54,25 +41,8 @@ def send_email_to_admin(request):
         return JsonResponse({"data": "false"})
 
 
-@login_required
-def like_book(request, pk):
-    book = Book.objects.get(id=pk)
-    book.rating += 1
-    book.save()
-    return render(request, "catalog/book_detail.html", {"book": book})
-
-
-@login_required
-def dislike_book(request, pk):
-    book = Book.objects.get(id=pk)
-    book.dislike += 1
-    book.save()
-    return render(request, "catalog/book_detail.html", {"book": book})
-
-
 def add_to_basket(request, pk):
     goods = request.session.get("goods", {})
-
     request.session["goods"] = goods
     if pk not in request.session["goods"]:
         request.session["goods"][pk] = 1

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python manage.py runserver localhost:8090
+python manage.py runserver 10.110.0.10:8000

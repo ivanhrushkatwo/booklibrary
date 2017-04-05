@@ -36,10 +36,9 @@
             </div>
             <div class="card-stacked">
                 <div class="card-content">
-                    <h4><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h4>
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
                     <p><strong>Author:</strong> {{book.author}}</p>
                     <p><strong>Category:</strong> {{book.category }}</p>
-                    <p><strong>Rating:</strong> {{ book.rating }}</p>
                     <p><strong>Price: {{ book.price }} $</strong></p>
                 </div>
                 <div class="card-action">

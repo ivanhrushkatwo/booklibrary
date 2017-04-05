@@ -27,10 +27,6 @@ urlpatterns = [
     url(r'^download_sample/(?P<pk>\d+)$', views.download_sample, name='download_sample'),
 
 
-
-    url(r'^like_book/(?P<pk>\d+)$', views.like_book, name="like_book"),
-    url(r'^dislike_book/(?P<pk>\d+)$', views.dislike_book, name="dislike_book"),
-
     url(r'^authors/', views.AuthorListView.as_view(), name="authors"),
     url(r'^author/(?P<pk>\d+)$', views.AuthorDetailView.as_view(), name="author-detail"),
 ]
