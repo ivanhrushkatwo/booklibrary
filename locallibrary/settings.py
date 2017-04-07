@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 
     'social_django',                # Social auth
     'catalog',                      # 'catalog.apps.AppConfig'
@@ -116,6 +117,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'gET6Hoz7NOrvSJxVCoGWxIa5'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -146,6 +148,8 @@ TEMPLATES = [
 
                 # basket list
                 'context_processors.custom_context_processor.basket_with_goods',
+
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -200,6 +204,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LANGUAGES = (
+    ('uk', 'Ukrainian'),
+    ('en', 'English'),)
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 
 # Static files (CSS, JavaScript, Images)
