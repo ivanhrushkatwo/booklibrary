@@ -24,7 +24,7 @@
 </head>
 <body>
 <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">#BM</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">#__BookMarket</a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{% url "basket" %}"><i class="material-icons right">shopping_cart</i><span id="basket">Basket {{ goods }}</span></a></li>
         {% if user.is_authenticated %}
@@ -72,10 +72,6 @@
                 <li><a href="{% url "search_category" category.id %}">{{ category.name }}</a></li>
             {% endfor %}
             </ul>
-            <ul id="dropdown2" class="dropdown-content">
-                <li><a href="#">TEST</a></li>
-                <li><a href="#">TEST</a></li>
-            </ul>
             <ul id="dropdown3" class="dropdown-content">
                 <li><a href="#">Rating</a></li>
                 <li><a href="#">Price</a></li>
@@ -87,17 +83,25 @@
                 </li>
                 <li>
                     <a class="dropdown-button" href="#" data-activates="dropdown1">
-                        <i class="material-icons left">clear_all</i>Shop by category<i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-button" href="#" data-activates="dropdown2">
-                        <i class="material-icons left">search</i>Search<i class="material-icons right">arrow_drop_down</i>
+                        Shop by category<i class="material-icons left">arrow_drop_down</i>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
+</div>
+<div>
+    <nav>
+        <div class="nav-wrapper container">
+            <form action="{% url 'search' %}" method="get">
+                <div class="input-field">
+                <input id="search" type="search" name="q" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+      </nav>
 </div>
 
 <div class="container" style="min-height: 500px">
@@ -119,7 +123,6 @@
                 <ul>
                     <li><p><a class="white-text" href="{% url 'index' %}">Home</a></p></li>
                     <li><p><a class="white-text" href="{% url 'books' %}">Books</a></p></li>
-                    <li><p><a class="white-text" href="{% url 'authors' %}">Authors</a></p></li>
                     <li><p><a class="white-text" href="{% url "about" %}">About us</a></p></li>
                 </ul>
             </div>

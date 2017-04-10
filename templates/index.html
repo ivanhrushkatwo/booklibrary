@@ -26,7 +26,7 @@
 <div class="row">
     {% for book in books %}
     <div class="col s12 m6">
-        <div class="card horizontal blue-grey lighten-5">
+        <div class="card horizontal hoverable blue-grey lighten-5">
             <div class="card-image">
                 {% if book.image %}
                     <img class="responsive-img" src="{{ book.image.url|resize:"128x128" }}" alt="">

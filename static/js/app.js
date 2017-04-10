@@ -16,10 +16,10 @@ $(function () {
                 let priceOfOneBook = parseInt(jQuery(".hide-price-book-id-" + book_pk).html());
                 let numberBook = parseInt(jQuery("#number-book-" + book_pk).html()) + 1;
 
-                jQuery("#number-book-" + book_pk).text(numberBook);
-                jQuery("#price-few_book-" + book_pk).text(numberBook);
-                jQuery("#amount-book-" + book_pk).text(priceOfOneBook * numberBook);
-                jQuery(".amount-of-books").html(basketAmount +  priceOfOneBook);
+                $("#number-book-" + book_pk).text(numberBook);
+                $("#price-few_book-" + book_pk).text(numberBook);
+                $("#amount-book-" + book_pk).text(priceOfOneBook * numberBook);
+                $(".amount-of-books").html(basketAmount +  priceOfOneBook);
 
             },
             error: function (error) {
@@ -37,31 +37,33 @@ $(function () {
             type: "GET",
             url: "delete_one_book_from_basket/" + book_pk,
             success: function (data) {
-                console.log("Start!");
                 jQuery("#basket").text("Basket " + data['count_goods']);
 
                 let basketAmount = parseInt(jQuery(".amount-of-books").html());
                 let priceOfOneBook = parseInt(jQuery(".hide-price-book-id-" + book_pk).html());
                 let numberBook = parseInt(jQuery("#number-book-" + book_pk).html()) - 1;
-
                 let s = parseInt(jQuery("#amount-book-" + book_pk).html()) - priceOfOneBook;
 
-                console.log(numberBook);
-                console.log(priceOfOneBook / numberBook);
-                jQuery("#number-book-" + book_pk).text(numberBook);
-                jQuery("#price-few_book-" + book_pk).text(numberBook);
-                jQuery("#amount-book-" + book_pk).text(s);
-                jQuery(".amount-of-books").html(basketAmount -  priceOfOneBook);
-                console.log("ENd!")
+                $("#number-book-" + book_pk).text(numberBook);
+                $("#price-few_book-" + book_pk).text(numberBook);
+                $("#amount-book-" + book_pk).text(s);
+                $(".amount-of-books").html(basketAmount -  priceOfOneBook);
 
                 if (data["empty"] === "true") {
-                    jQuery('.book-id-' + book_pk).remove();
-                    let basketContent = jQuery('.not-empty');
-                        if (basketContent.length < 1) {
-                            window.open('http://10.110.0.10:8000/catalog/basket', "_self")
-                        } else {
-                            return false
-                        }
+                    jQuery('.book-id-' + book_pk).animate({
+                    opacity: 0.50,
+                    left: "+=10",
+                    height: "toggle"
+                      }, 500, function() {
+                        jQuery('.book-id-' + book_pk).remove();
+
+                        let basketContent = jQuery('.not-empty');
+                            if (basketContent.length < 1) {
+                                window.open('http://10.110.0.10:8000/catalog/basket', "_self")
+                            } else {
+                                return false
+                            }
+                    });
                 }
             },
             error: function () {

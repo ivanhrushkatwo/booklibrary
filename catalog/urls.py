@@ -18,7 +18,7 @@ urlpatterns = [
 
     url(r'^clear_basket/$', views.clear_basket, name="clear_basket"),
 
-
+    url(r'^search/$', views.search, name="search"),
     url(r'^search_category/(?P<pk>\d+)$', views.search_category, name="search_category"),
 
     url(r'^books/$', views.BookListView.as_view(), name='books'),
@@ -26,7 +26,5 @@ urlpatterns = [
 
     url(r'^download_sample/(?P<pk>\d+)$', views.download_sample, name='download_sample'),
 
-
-    url(r'^authors/', views.AuthorListView.as_view(), name="authors"),
     url(r'^author/(?P<pk>\d+)$', views.AuthorDetailView.as_view(), name="author-detail"),
 ]

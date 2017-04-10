@@ -8,6 +8,8 @@ from django.views import generic
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.shortcuts import redirect
+from django.core.exceptions import FieldError
+from simple_search import search_filter
 
 from .models import Book, Author
 
@@ -19,6 +21,18 @@ def index(request):
 
 def search_category(request, pk):
     books = Book.objects.filter(category=pk)
+    return render(request, "catalog/book_list.html", {"book_list": books})
+
+
+def search(request):
+    query = request.GET.get("q", "")
+    search_field = ['^title', '^summary', 'author__first_name', 'author__last_name', 'category__name']
+    try:
+       f = search_filter(search_field, query)
+       books = Book.objects.filter(f)
+    except FieldError:
+        books = {}
+
     return render(request, "catalog/book_list.html", {"book_list": books})
 
 
@@ -55,7 +69,6 @@ def add_to_basket(request, pk):
 def delete_one_book_from_basket(request, pk):
     request.session.modified = True
     request.session["goods"][pk] -= 1
-    print(request.session["goods"][pk])
     if request.session["goods"][pk] == 0:
         del request.session["goods"][pk]
         context = {"count_goods": str(sum(list(request.session["goods"].values()))), "empty": "true"}
@@ -120,11 +133,6 @@ class BookListView(generic.ListView):
 
 class BookDetailView(generic.DetailView):
     model = Book
-
-
-class AuthorListView(generic.ListView):
-    model = Author
-    paginate_by = 8
 
 
 class AuthorDetailView(generic.DetailView):
