@@ -4,30 +4,20 @@ Mini market book
 Run project
 --------------------
 
-1. Create virtualenv.
+1. Clone project.
 ```sh
-$ virtualenv -p /usr/bin/python3.6 evn_py3
-$ cd env_py3
-$ source bin/activate
-```
-
-2. Create folder for project.
-```sh
-$ mkdir src
-$ cd src
 $ git clone https://github.com/ivanhrushkatwo/booklibrary.git
 ```
 
-3. Install dependencies.
+2. Install dependencies.
 ```sh
 $ cd booklibrary
 $ pip install -r requirements.txt
 ```
 
-4. Last step.
+3. Last step.
 ```sh
+Configurate database(I use Postgresql)
+$ python manage.py migrate
 $ python manage.py runserver
 ```
-
-open in browser [http://localhost:8000](http://localhost:8000)
-
