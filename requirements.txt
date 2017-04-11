@@ -7,7 +7,6 @@ django-admin-bootstrapped==2.5.7
 django-getpaid==1.7.6
 celery==4.0.2
 Pillow
-django-simple-search==1.0.2
 django-imagefit
 django-crispy-forms==1.6.1
 djangoajax
