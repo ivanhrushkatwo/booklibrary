@@ -8,7 +8,6 @@ from django.views import generic
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.shortcuts import redirect
-
 from django.contrib.postgres.search import SearchVector
 
 from .models import Book, Author
@@ -29,7 +28,6 @@ def search(request):
     books = Book.objects.annotate(
         search=SearchVector("title", "summary", "author__first_name", "author__last_name", "category__name"),
     ).filter(search=q)
-    print(books)
     return render(request, "catalog/book_list.html", {"book_list": books})
 
 
